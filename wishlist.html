@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Your E-Commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* Keep all your existing styles */
+        body {
+            margin-top: 80px;
+            background-color: #333;
+        }
+        
+        .wishlist-container {
+            padding: 20px;
+            color: white;
+        }
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .wishlist-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            background-color: #444;
+        }
+        
+        .wishlist-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .wishlist-item h3 {
+            margin: 10px 0;
+            color: #febd69;
+        }
+        
+        .wishlist-item .price {
+            font-size: 1.2em;
+            color: white;
+        }
+        
+        .wishlist-item .rating {
+            color: #ffc107;
+        }
+        
+        .wishlist-item .delivery {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .wishlist-actions {
+            margin-top: 15px;
+        }
+        
+        .move-to-cart {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .remove-wishlist {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        
+        #empty-wishlist-message {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.1rem;
+            background-color: #444;
+            border-radius: 8px;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing header -->
+    <header class="header">
+        <div class="container-header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <span class="dotin"></span>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for products..." />
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="header-action">
+                    <i class="fa-regular fa-heart"></i>
+                   <a href="wishlist.html" style="color: white;"><p>Wishlist</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.html" style="color: white;"><p>cart</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="account.html" style="color: white;"><p>Account</p></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Your existing navigation -->
+    <nav class="nav">
+        <div class="container-nav">
+            <ul>
+                <li class="border-white"><a href="index.html">Home</a></li>
+                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
+                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+                <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
+                <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
+                <li class="border-white"><a href="electronics.html">Electronics</a></li>
+                <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
+                <li class="border-white"><a href="fashion.html">Fashion</a></li>
+                <li class="border-white"><a href="accessories.html">Accessories</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Wishlist Content -->
+    <div class="wishlist-container">
+        <h1 style="text-align: center; color: #f44336; margin-bottom: 20px;">YOUR WISHLIST</h1>
+        
+        <div class="wishlist-grid" id="wishlist-items">
+            <p id="empty-wishlist-message">Your wishlist is empty.</p>
+            <!-- Wishlist items will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Your existing footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/akheel____007/?next=%2F"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const wishlistContainer = document.getElementById('wishlist-items');
+            const emptyMessage = document.getElementById('empty-wishlist-message');
+            
+            if (wishlist.length === 0) {
+                emptyMessage.style.display = 'block';
+                return;
+            } else {
+                emptyMessage.style.display = 'none';
+            }
+            
+            wishlist.forEach(item => {
+                const wishlistItem = document.createElement('div');
+                wishlistItem.className = 'wishlist-item';
+                wishlistItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/150'">
+                    <h3>${item.name}</h3>
+                    <div class="rating">${item.rating || '★★★★☆'}</div>
+                    <div class="price">${item.price}</div>
+                    <div class="delivery">${item.delivery || 'Delivery information not available'}</div>
+                    <div class="wishlist-actions">
+                        <button class="move-to-cart" data-id="${item.id}">Add to Cart</button>
+                        <button class="remove-wishlist" data-id="${item.id}">Remove</button>
+                    </div>
+                `;
+                
+                wishlistContainer.appendChild(wishlistItem);
+            });
+            
+            // Add event listeners
+            document.querySelectorAll('.move-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    moveToCart(productId);
+                });
+            });
+            
+            document.querySelectorAll('.remove-wishlist').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    removeFromWishlist(productId);
+                });
+            });
+            
+            function moveToCart(productId) {
+                const wishlist = JSON.parse(localStorage.getItem('wishlist'));
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const product = wishlist.find(item => item.id === productId);
+                
+                if (product) {
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity = (existingItem.quantity || 1) + 1;
+                    } else {
+                        product.quantity = 1;
+                        cart.push(product);
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert(`${product.name} added to cart!`);
+                }
+            }
+            
+            function removeFromWishlist(productId) {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist'));
+                wishlist = wishlist.filter(item => item.id !== productId);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Your E-Commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+.container-nav{
+    background-color: black;
+    height: 40px;
+    color: white;
+    padding: 0 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fix the navigation below the header */
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the navigation is above other elements */
+}
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .product-card .rating {
+            color: #ffc107;
+        }
+body {
+            margin-top: 80px; /* Adjust this value based on your header's height */
+            background-color: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .category-card {
+            background-color: #444;
+            border: 1px solid #555;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        .category-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .category-card h3 {
+            margin: 15px 0;
+            font-size: 1.5em;
+        }
+        .category-card button {
+            background-color: #0d23ec;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .category-card button:hover {
+            background-color: #e0a800;
+        }
+        .header {
+            background-color: #222;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .container-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .container-nav ul li {
+            display: inline;
+        }
+        .container-nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .header {
+    background-color: black;
+    height: 60px;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the header is above other elements */
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <span class="dotin"></span>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for products..." />
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="header-action">
+                    <i class="fa-regular fa-heart"></i>
+                   <a href="wishlist.html" style="color: white;"><p>Wishlist</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.html" style="color: white;"><p>cart</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="account.html" style="color: white;"><p>Account</p></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+   <!--navigation-->
+   <nav class="nav">
+    <div class="container-nav">
+        <ul>
+      
+            <li class="border-white"><a href="index.html">Home</a></li>
+            <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
+            <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+            <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
+            <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
+            <li class="border-white"><a href="electronics.html">Electronics</a></li>
+            <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
+            <li class="border-white"><a href="fashion.html">Fashion</a></li>
+            <li class="border-white"><a href="accessories.html">Accessories</a></li>
+        </ul>
+
+</nav>
+<br>
+
+ <div class="category-grid">
+        <div class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.5BJTmL6j4-vtKLXWWnHkngHaEK?w=302&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Smartphones">
+            <h3>Smartphones</h3>
+            <button onclick="window.location.href='mobiles.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="https://th.bing.com/th/id/OIP._o8nxpn2FA5Qr2AnwNMg3gHaE8?w=284&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Laptops">
+            <h3>Laptops</h3>
+            <button onclick="window.location.href='electronics.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.hDj2BXSd2y2M9eVbryjAxQHaFj?w=197&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Tablets">
+            <h3>Tablets</h3>
+            <button onclick="window.location.href='electronics.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.67_02EKvv1F41u4uAARjvAHaEK?rs=1&pid=ImgDetMain" alt="Fashion">
+            <h3>Fashion</h3>
+            <button onclick="window.location.href='fashion.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="https://th.bing.com/th/id/OIP.ACgKyCJmJyZuATCh-Rk_SAHaHa?pid=ImgDet&w=184&h=184&c=7&dpr=1.3" alt="Fashion">
+            <h3>Furniture</h3>
+            <button onclick="window.location.href='furniturestore.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="images/fashion.jpg" alt="Fashion">
+            <h3>Fashion</h3>
+            <button onclick="window.location.href='fashion.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="images/fashion.jpg" alt="Fashion">
+            <h3>Fashion</h3>
+            <button onclick="window.location.href='fashion.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="images/fashion.jpg" alt="Fashion">
+            <h3>Fashion</h3>
+            <button onclick="window.location.href='fashion.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="images/fashion.jpg" alt="Fashion">
+            <h3>Fashion</h3>
+            <button onclick="window.location.href='fashion.html'">Shop Now</button>
+        </div>
+        <div class="category-card">
+            <img src="images/fashion.jpg" alt="Fashion">
+            <h3>Fashion</h3>
+            <button onclick="window.location.href='fashion.html'">Shop Now</button>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/akheel____007/?next=%2F"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="javascript.js"></script>
+    <script src = "cart.js"></script>
+</body>
+</html>

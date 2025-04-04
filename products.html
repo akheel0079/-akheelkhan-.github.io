@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Your E-Commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .product-card .rating {
+            color: #ffc107;
+        }
+        body {
+    margin-top: 80px; /* Adjust this value based on your header's height */
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <span class="dotin"></span>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for products..." />
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="header-action">
+                    <i class="fa-regular fa-heart"></i>
+                   <a href="wishlist.html" style="color: white;"><p>Wishlist</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.html" style="color: white;"><p>cart</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="account.html" style="color: white;"><p>Account</p></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+   <!--navigation-->
+   <nav class="nav">
+    <div class="container-nav">
+        <ul>
+      
+            <li class="border-white"><a href="index.html">Home</a></li>
+            <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
+            <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+            <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
+            <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
+            <li class="border-white"><a href="electronics.html">Electronics</a></li>
+            <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
+            <li class="border-white"><a href="fashion.html">Fashion</a></li>
+            <li class="border-white"><a href="accessories.html">Accessories</a></li>
+        </ul>
+
+</nav>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/laptop.jpg" alt="UMIDIGI A15C">
+            <h3>UMIDIGI A15C NFC Mobile Phone</h3>
+            <div class="rating">★★★★☆ (379)</div>
+            <div class="price">£129.99</div>
+            <div class="delivery">£17.16 delivery Wed, 2 Apr</div>
+            <div class="stock">Only 14 left in stock</div>
+            <div class="options">1 other colour/pattern</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <div class="product-card">
+            <img src="images/hero.jpg" alt="QUKITEL C51">
+            <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+        </div>
+        <!-- Add more product cards as needed -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/akheel____007/?next=%2F"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="javascript.js"></script>
+</body>
+</html>

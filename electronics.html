@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Your E-Commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .product-card .rating {
+            color: #ffc107;
+        }
+        body {
+            margin-top: 80px; /* Adjust this value based on your header's height */
+            background-color: #333;
+        }
+        .category-section {
+            margin-bottom: 40px;
+        }
+        .category-section h2 {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <span class="dotin"></span>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for products..." />
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="header-action">
+                    <i class="fa-regular fa-heart"></i>
+                   <a href="wishlist.html" style="color: white;"><p>Wishlist</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.html" style="color: white;"><p>cart</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="account.html" style="color: white;"><p>Account</p></a>
+                </div>
+            </div>
+        </div>
+    </header>
+   <nav class="nav">
+    <div class="container-nav">
+        <ul>
+      
+            <li class="border-white"><a href="index.html">Home</a></li>
+            <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
+            <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+            <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
+            <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
+            <li class="border-white"><a href="electronics.html">Electronics</a></li>
+            <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
+            <li class="border-white"><a href="fashion.html">Fashion</a></li>
+            <li class="border-white"><a href="accessories.html">Accessories</a></li>
+        </ul>
+</nav>
+<br>
+    <!-- Category Sections -->
+    <div class="category-section">
+        <h2>Smartphones</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61s1P+29yoL._AC_UY327_FMwebp_QL65_.jpg" alt="image">
+                <h3>IPhone 16 pro max</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <a href="cart.html">
+                <button>Add to Basket</button></a>
+                <button>Add to wishlist</button>
+            
+                <a href="sepprod.html?id=1"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.1n2MgSlbhLBZdHFqvVkAfwAAAA?w=170&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="UMIDIGI A15C">
+                <h3>Samsung s24 ultra</h3>
+                <div class="rating">★★★★☆ (379)</div>
+                <div class="price">£129.99</div>
+                <div class="delivery">£17.16 delivery Wed, 2 Apr</div>
+                <div class="stock">Only 14 left in stock</div>
+                <div class="options">1 other colour/pattern</div>
+                <button>Add to Basket</button>
+                <button>Add to wishlist</button>
+                   <a href="sepprod.html?id=2"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>     </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th?id=OIP.zPAaLTDaSnBrh2eLahNtEQHaJb&w=221&h=282&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="QUKITEL C51">
+                <h3>Redmi Note 13 Pro 5g</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=3"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61QWVJBjFqL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>Nothing phone 2A</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div>£17.62 delivery Wed, 2 Apr</div>
+                <div >2 other colours/patterns</div>
+                <button>Add to Basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=4"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.GFDfH4OdkxuEZik3DR0kKQHaHa?w=176&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="QUKITEL C51">
+                <h3>iQOO Neo 9 pro</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to Basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=5"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.xE1bYSfFNUH9CRHj_DD5LQHaJF?rs=1&pid=ImgDetMain" alt="QUKITEL C51">
+                <h3>Vivo v13 pro</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to Basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=6"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/81oRCjk44rL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>DOOGEE</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to Basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=7"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71cxlQhiQqL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>UMIDIGI</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=8"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/612ZyUm0JsL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>OnePlus 12 5G (UK)</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to whishlist</button>
+                <a href="sepprod.html?id=9"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/81Vdy-mfVEL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>ASUS ROG Phone 7 5G smartphone</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to whishlist</button>
+                <a href="sepprod.html?id=10"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61G8w9C7oHL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>Motorola Moto g85 5G</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to Basket</button>
+                <button>Add to whishlist</button>
+                <a href="sepprod.html?id=11"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.BkG0am3D1vIKux_eYBB6vgAAAA?pid=ImgDet&w=159&h=339&c=7" alt="QUKITEL C51">
+                <h3>Infinix GT10 Pro (Cyber Black, 256 GB)</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+              
+    
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=12"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <!-- Add more product cards as needed -->
+        </div>
+
+    <div class="category-section">
+        <h2>Laptops</h2>
+       <div class="product-grid">
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/618r76w5dGL._AC_UY327_FMwebp_QL65_.jpg" alt="image">
+                <h3>Apple 2024 MacBook Pro Laptop with M4 chip with 10 core CPU</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=25"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/716uMsfCxbL._AC_UY327_FMwebp_QL65_.jpg" alt="UMIDIGI A15C">
+                <h3>ACEMAGIC Newest 15.6" Laptop for Students and Business,Quad-Core N-97 Processor Up to 3.6GHz</h3>
+                <div class="rating">★★★★☆ (379)</div>
+                <div class="price">£129.99</div>
+                <div class="delivery">£17.16 delivery Wed, 2 Apr</div>
+                <div class="stock">Only 14 left in stock</div>
+                <div class="options">1 other colour/pattern</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=26"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71J0O9IHi7L._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>ACEMAGIC GAMING LAPTOP</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=27"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/6177weNRfFL._AC_SL1221_.jpg" alt="QUKITEL C51">
+                <h3>ASUS ROG Zephyrus M16 Gaming Laptop 2023, 16" QHD 240Hz Display,</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=28"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61nTNphSBvL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>TUF Gaming A15, 15.6" (39.62cm) FHD 16:9 144Hz, AMD Ryzen 7 7435HS, Gaming</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=29"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71qRWDn7yoL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>ASUS ROG Strix G18</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=30"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a> 
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71S1eXJmIAL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>HP OMEN Core i7 13700HX 13th Gen - (16 GB/1 TB SSD/Windows 11 Home/8 GB Graphics/NVIDIA GeForce RTX 4070) 16-u0005TX Gaming Laptop</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=31"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/81Ev2S5nrVL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>Lenovo IdeaPad Pro 5, Intel Core Ultra 9 185H, 32GB RAM, 1TB SSD, 2.8K-OLED 400Nits 120Hz, 14"/35.5cm,</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=32"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71VG3azYMjL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                <h3>MSI Thin 15, Intel Core i7-12650H, 40CM FHD 144Hz Gaming Laptop(16GB/512GB NVMe SSD/Windows 11 Home/NVIDIA GeForce RTX 4050)</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=33"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://images.frandroid.com/wp-content/uploads/2024/01/razer-blade-16-2024-frandroid-2024.png" alt="QUKITEL C51">
+                <h3>Razer Blade 16 Intel Core i9 32GB 1TB RTX 4080 240Hz QHD 16 Inch Windows 11 Gaming Laptop</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=34"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.WMSPl5ENCaPpj_nlf2SwaAHaFj?rs=1&pid=ImgDetMain" alt="QUKITEL C51">
+                <h3>Samsung Galaxy Book4 Ultra, RTX 4070</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=35"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.1h9othO2DYh8E93CY3vRegHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="QUKITEL C51">
+                <h3>ROG zephyrus G16</h3>
+                <div class="rating">★★★★☆ (1,585)</div>
+                <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                <div class="options">2 other colours/patterns</div>
+                <button>Add to basket</button>
+                <button>Add to wishlist</button>
+                <a href="sepprod.html?id=36"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            </div>
+            <!-- Add more product cards as needed -->
+        </div>
+        <div class="category-section">
+            <h2>Tablets</h2>
+           <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/tablet/j/f/f/-original-imah4zj6zp9cfa53.jpeg?q=70" alt="image">
+                    <h3>Redmi pad pro 5g</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">₹20,999     <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">₹59 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=37"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <br>
+                    <br>
+                    <br>
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/tablet/8/i/q/-original-imaguyffv34ghmky.jpeg?q=70" alt="UMIDIGI A15C">
+                    <h3>SAMSUNG Galaxy Tab S9 FE+</h3>
+                    <div class="rating">★★★★☆ (379)</div>
+                    <div class="price">₹19,999</div>
+                    <div class="delivery">₹71 delivery Wed, 2 Apr</div>
+                    <div class="stock">Only 14 left in stock</div>
+                    <div class="options">1 other colour/pattern</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=38"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <br>
+                    <br>
+                    <img src="https://m.media-amazon.com/images/I/61mpmFMSAML._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                    <h3>Lenovo Tab Plus 8 GB RAM 128 GB</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">₹15,999 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=43"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/tablet/f/k/b/-original-imah4rktdpdfyhbm.jpeg?q=70" alt="QUKITEL C51">
+                    <h3>realme Pad 2 Lite 4 GB RAM 128 GB ROM</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">₹12,999 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">₹60 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=40"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/71KY4mzGfSL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                    <h3>UMIDIGI</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">₹10,999<span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=41"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/81q9TZwKhwL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                    <h3>OUKITEL</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">₹15,999 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">₹199 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=42"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/71a+I5A5slL._AC_UY327_FMwebp_QL65_.jpg" alt="QUKITEL C51">
+                    <h3>Blackview</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">₹8,999 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">₹199 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=39"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://th.bing.com/th/id/OIP.ooNXtRBlQPYJaPQ3YZ9FLgHaEK?w=267&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="QUKITEL C51">
+                    <h3>Razer Edge 5G Gaming Tablet</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=44"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://th.bing.com/th/id/OIP.L8gVYk9AGJ1EoJYSIA0OjAHaGV?w=189&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="QUKITEL C51">
+                    <h3>Motorola Tab G85 5G                 </h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=45"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.anandtech.com/doci/6387/DSC_0024_575px.jpg" alt="QUKITEL C51">
+                    <h3>Asus vivo Tab</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">£17.62 delivery Wed, 2 Apr</div>=
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=46"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://th.bing.com/th/id/OIP.YTI91yGuGFvZT03eQz8KgAHaHX?w=179&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="QUKITEL C51">
+                    <h3>DOGEE T20 ultra Tablet</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=47"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <div class="product-card">
+                    <img src="https://phonecorridor.com/wp-content/uploads/infinix-xpad.jpg" alt="QUKITEL C51">
+                    <h3>Infinix Note pad</h3>
+                    <div class="rating">★★★★☆ (1,585)</div>
+                    <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
+                    <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+                    <div class="options">2 other colours/patterns</div>
+                    <button>Add to basket</button>
+                    <button>Add to whishlist</button>
+                    <a href="sepprod.html?id=48"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+                </div>
+                <!-- Add more product cards as needed -->
+            </div>
+    </div>
+
+    <div class="category-section">
+        <h2>Acceessories</h2>
+       
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRQgILCXWetuT79ToILn_mFqCBsTq-Sla1dwFjZYZUfVwzZJ86uivsJU1DylzPFWrKp2lddOBrCTrZ-mNeqC-0UrxA2QDMCzUWIcKl62AyFGTzgvlAeZKT3" alt="image">
+            <h3>Apple AirPods Max with Active Noise Cancellation (ANC) – Space Grey</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">₹97,500 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹170.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=103"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTrTT7xXOEqKTmowjsN5KQpQQDmRMKQ7SDwMHHbaj4GVibh29_9u3E6ceDfwtiL18h4RTEG7FC3lJXpIdK_nUOmWsg4ydyo5lYZvX7cmA0FH0maUceeqmYa" alt="UMIDIGI A15C">
+            <h3>Apple Watch Ultra 2nd Generation</h3>
+            <div class="rating">★★★★☆ (379)</div>
+            <div class="price">₹59,891.18</div>
+            <div class="delivery">₹700.16 delivery Wed, 2 Apr</div>
+            <div class="stock">Only 14 left in stock</div>
+            <div class="options">1 other colour/pattern</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=104"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRQxvFG2YG_czmD7ga9wRB6piqb6YBvy3AQyxWYYvs_6eQA0vE5UrlfvR8ouOMM8Ap_qzlAe7qWWukVKM7LO6KKfZGRxmVXnSRFhf9x3d7uv2csuPKKn2SJ" alt="QUKITEL C51">
+            <h3>Dell MS3320W Mobile Wireless Mouse</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">
+                ₹1,911.18<span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹190.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=105"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR6UbdWstAtBL9CAhJu7iB1oRNjgXo9-5jNIiOmy5_fdytdcQrmdRYqfPd4tH11SUJicR3bN3pNMXb6ISajYkL_M6c6f4Wj52CTew8Ad78ABwMSdskkIOSm" alt="QUKITEL C51">
+            <h3>Zebronics NTC2000 Latpop Cooling Pad</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">
+                ₹6,271.97 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹180.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=106"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSaUqGhe1XFQeBBuQwgnkBxnyzn2awtXHF5_F-iizmk6PRaAxrxXCPBwCAxoISbddTUAy2QcwrzUEz_7pYpIxWvIzdocX0nNz9gAppdJvZq9gjQIT19tq-I" alt="QUKITEL C51">
+            <h3>Gigabyte Aorus Gen5 12000 2 NVMe SSD</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">₹77,104.38 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=107"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ6rfzUxdZozEAT6Tj5J7jry5dVewQO4qc1vDLGCWwLAwswGJBwM5VreKrYA_7uNmepY7aeJW3isuj-FCt-eU0XGxE25tndhd4-S-fzHh_E4bommFZxLDqSBA">
+            <h3>Thrustmaster T.Flight Stick X Joystick</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">₹19,887.01<span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹1,900.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=108"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQeKlbBqTz2IzFDjl9JpzemYYRw6veJe44bXA9ACkSgbIGD5eMe-gLdLoQ1XaZxGs8H2KaWm_fNCnY8vnbKI7ojPoEWuOD_4gvT3wSn52nwZEG0P76Qo5Hg">
+            <h3>Portronics Key7 Combo Wireless Keyboard & Mouse Set</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">₹98,619.10 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹1,700.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to whishlist</button>
+            <a href="sepprod.html?id=109"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSUa1z6AR1x3AE7K-1-_AO2P_pa0xeyoc5eDxn87xcUNgdd7sAlRFOIkYs-Jhc8yP3TwSBmUzmMuJW4TZGWDa3RKmfP5pnZSmeN96pSeqHNueUHmkPcNQzUaw">
+            <h3>Stuffcool Click 20000mAh Magnetic Wireless Powerbank</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">
+                ₹10,00,000 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹10,000.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to wishlist</button>
+            <a href="sepprod.html?id=110"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT8JG-KezDTrlKfjM3C2IyNltddj-d-jzbRPclWrT-mbwG_rutQyKDyDRRdb0Z5MXVf73QFXzbXf4V3fJToljSWbJsSaBLTNTDl0IYI0c8xA2i8PrPVcm_RHA">
+            <h3>RUIZU X02 MP3 Player</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">₹99,037.08 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹1,300.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to wishlist</button>
+            <a href="sepprod.html?id=111"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTQqA--XBYYmomlL7FUYM1ujw0vsOOJC9NEBmn4kbpl4XNAEeddH7hsU44PoTjt5Uc_xHnBzjFCScTJqLb3pYO0R0XO4anB-49Ecg1BvtyqaoognXHKhMyKxA">
+            <h3>Apple AirPods 4</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">
+                ₹2,09,000<span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹1,000.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to wishlist</button>
+            <a href="sepprod.html?id=112"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcToa40R277H_wdk31lsJhhWkbVWYnBxxSa4bJCKjdajLp_tlO9q3ZpP_0tjtTMVYlNOAoLzOWOGb8IphpTGeoQoRJJfl6vwaUa3ZGAYKYbfxQsNb5F3aeSg">
+            <h3>JBL Boombox 3 Portable Bluetooth Speaker</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">
+                ₹93,500 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹1,900.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to wishlist</button>
+            <a href="sepprod.html?id=113"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <div class="product-card">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT9vZ93ie6A99g6f9tC8sgPQ7GqQ_O_hgi6EDJBXM14hKzQhRxAdB9qFl7wAZQOdqQjzhmTzniO2SQTfPbOdRH-4cCEySIx8lhlIJMfJH38aKWlDnX2VRyI">
+            <h3>Nitho Hexagon Wireless Controller</h3>
+            <div class="rating">★★★★☆ (1,585)</div>
+            <div class="price">₹77,079 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹1,600.62 delivery Wed, 2 Apr</div>
+            <div class="options">2 other colours/patterns</div>
+            <button>Add to basket</button>
+            <button>Add to wishlist</button>
+            <a href="sepprod.html?id=114"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>   
+        </div>
+        <!-- Add more product cards as needed -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/akheel____007/?next=%2F"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="javascript.js"></script>
+<script src = "cart.js"></script>
+<script src = "wishlist.js"></script>
+<script src="products.js"></script>
+<script src="search.js"></script>
+</body>
+</html>
