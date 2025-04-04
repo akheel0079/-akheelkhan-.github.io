@@ -63,7 +63,7 @@ body {
 .logo {
     width: 120px; /* Adjust based on your logo size */
     height: 50px; /* Adjust based on your logo size */
-    background: url('images/quad.jpg') no-repeat center center/contain;
+    background: url('quad.jpg') no-repeat center center/contain;
 }
 
 .dotin {
