@@ -36,6 +36,8 @@
     margin-top: 80px; /* Adjust this value based on your header's height */
 }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 </head>
 <body>
     <!-- Header -->
@@ -46,11 +48,21 @@
                 <span class="dotin"></span>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for products..." />
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
             </div>
+            
             <div class="header-actions">
                 <div class="header-action">
                     <i class="fa-regular fa-heart"></i>
@@ -62,8 +74,9 @@
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
@@ -72,14 +85,16 @@
             <ul>
       
                 <li class="border-white"><a href="index.html">Home</a></li>
-                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+                  
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
                 <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
                 <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
                 <li class="border-white"><a href="electronics.html">Electronics</a></li>
                 <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
                 <li class="border-white"><a href="fashion.html">Fashion</a></li>
                 <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
             </ul>
     </nav>
 
@@ -88,7 +103,7 @@
             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDAwRTHdbuw2gufk-4GdUTEPuJVR_9mb-_HY4-GsXpLoypncR20eqBTNi2kSJMDg7Q4kKYeoGivQQcRIOPNVvt_7vY0Hh9Ea_Kpy4vb70" alt="image">
             <h3>Wood Art City Rosewood 2-Seater Settee Sofa Diwan Couch for Home and Living Room (Dark Grey 5)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹1,97,500 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹1,97,500  </div>
             <div class="delivery">₹170.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -111,9 +126,8 @@
             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTXd5n1clvB6afZHET0IWrtj4w6ezXOTy9aPMuz7hxYIdGbRVqBjdhCEddXNkSDJPjM5y_SkgGp3KKi29xPho6q5Qeeqi_SC2FmJluRqvOI" alt="QUKITEL C51">
             <h3>Wooden Living Room Set up Modern Design for Expanding Horizon of Every Home Decor. / 3 / BROWN</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">
-                ₹9,94,011.18<span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">₹19,000.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹9,94,011.18 </div>
+          
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -124,7 +138,7 @@
             <h3>Wakefit Coffee Table | Natural Finish Color, Engineered Wood Coffee Table</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹86,271.97 <span class="discount">Save 5% with voucher</span></div>
+                ₹86,271.97 </div>
             <div class="delivery">₹1,800.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -135,7 +149,7 @@
             <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ6aTnWV0Lb0GZk6sEwuHYENMhNVPtk22kFqnd8aCgcl1Dr4KGqNmMuaKPPJd4D0gJMmV6bTFCLU13VN1dTXjXAAyCvjbPxYzaKttYziDAoLz9zZhy3_PR7" alt="QUKITEL C51">
             <h3>CASPIAN Engineered Wood Furniture Dressing Table with Stoeage || Make Up Table|| Organizer for Room || Vanity (Colour Rainforest Dark), White</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹77,104.38 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹77,104.38 </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -146,7 +160,7 @@
             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRcfu3qMuJmz7EwlLDM7ojoB8n8gqmCl59Vc2F5xYH6XgcdPPjeBiajjrWfHMReUKI46fnO8WkmGWZXNKclujc0HMHbVBy9BZGk0V9elbI" alt="QUKITEL C51">
             <h3>FireBees Bedside Table for Bedroom,Table,Coffee Table,Side Table,Bedside Table,Furniture for Living Room,Bed Side Table,End Table,Stool for Living</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹19,887.01<span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹19,887.01 </div>
             <div class="delivery">₹1,900.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -157,7 +171,7 @@
             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQP6NFFfauNccUy_iQfyvJfPW3nfB3sIEd0Rjqrae65P331OVYCOCIG0Ffir04ZXUJjneFEUmTXDvGsE0Mz8Tw6qKIuFDP5dZx_Gq07_W9x" alt="QUKITEL C51">
             <h3>PIPERCRAFTS Chest of Drawers Sheesam Wood Furniture for Storage and Sideboard Tv Unit Sheesam Wood Honey Finish (Design 5)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹98,619.10 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹98,619.10  </div>
             <div class="delivery">₹1,700.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -169,7 +183,7 @@
             <h3>OXTEM The Furniture World U-Shape Sectional Sofa for Living Room, 10-Seater | Fabric Sofa Set, Seating Capacity 14 Persons</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹10,00,000 <span class="discount">Save 5% with voucher</span></div>
+                ₹10,00,000  </div>
             <div class="delivery">₹10,000.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -180,7 +194,7 @@
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTMoNeHmHeNolp-aaT_8L196PGXmIyjCgbkCGSDbgtUHLhhHBdqtd8cGNl0BZnDmJ5WXnwt5XOrHJidTcJa4oWlFFRDtyZAZxjpqy788EA" alt="QUKITEL C51">
             <h3>Whitebeard Premium Sheesham Wood 6 Seater Sofa Set,Home,Office,Living Room, Hotels,Cafe, Fabric 3 + 2 + 1 Sofa Set</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹99,037.08 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹99,037.08  </div>
             <div class="delivery">₹1,300.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -192,7 +206,7 @@
             <h3>FURNEASER Livik Modern Centre Table with Storage, Tea, Coffee Table for Living Room, Engineered Wood, Matte Finish (White)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹2,09,000<span class="discount">Save 5% with voucher</span></div>
+                ₹2,09,000 </div>
             <div class="delivery">₹1,000.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -204,7 +218,7 @@
             <h3>Sofa Set 3+2+1 for Living Room | Wooden Sofa Set Online | Sheesham Wood</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹93,500 <span class="discount">Save 5% with voucher</span></div>
+                ₹9,500  </div>
             <div class="delivery">₹1,900.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -215,7 +229,7 @@
             <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSqXhDbXMu-zClpYLOknt5424CqLMRPImMUP5vF2Yzs0sD3vGRDZ5MI4IJOFcDSh-B-nWmOFtOyR_zQ-VnvqxALxnNhxbT3jhksuZBt-J6y" alt="QUKITEL C51">
             <h3>NISHA FURNITURE Solid Wooden Center Table with 4 Stool, Coffee Table with 4 Stool Set, Center Coffee Table for Living Room, Hotel Lounge Office</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹77,079 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹7,079  </div>
             <div class="delivery">₹1,600.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -228,7 +242,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://x.com/home"><i class="fa-brands fa-twitter"></i></a>
@@ -239,5 +253,23 @@
     <script src="javascript.js"></script>
     <script src = "cart.js"></script>
     <script src="wishlist.js"></script>
+    <script src="auth.js"></script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      const accountInfo = document.getElementById('account-info');
+    
+      if (user) {
+        accountInfo.innerHTML = `
+          <a href="account.html" style="color: white;">
+            <p>${user.name.split(' ')[0]}</p>
+          </a>
+        `;
+      } else {
+        accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+      }
+    });
+    
+    </script>
 </body>
 </html>

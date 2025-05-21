@@ -32,8 +32,9 @@
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
@@ -44,14 +45,16 @@
             <ul>
       
                 <li class="border-white"><a href="index.html">Home</a></li>
-                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+                  
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
                 <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
                 <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
                 <li class="border-white"><a href="electronics.html">Electronics</a></li>
                 <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
                 <li class="border-white"><a href="fashion.html">Fashion</a></li>
                 <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
             </ul>
     </nav>
 
@@ -69,7 +72,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
@@ -80,5 +83,23 @@
 
     <!-- JavaScript -->
     <script src="javascript.js"></script>
+    <script src="auth.js"></script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      const accountInfo = document.getElementById('account-info');
+    
+      if (user) {
+        accountInfo.innerHTML = `
+          <a href="account.html" style="color: white;">
+            <p>${user.name.split(' ')[0]}</p>
+          </a>
+        `;
+      } else {
+        accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+      }
+    });
+    
+    </script>
 </body>
 </html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/quad.jpg" />
+    <title>My Orders - Quadcore</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Orders Page Specific Styles */
+        .orders-container {
+            max-width: 1200px;
+            margin: 140px auto 50px;
+            padding: 20px;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2d2de7;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .page-title i {
+            color: #2e86d2;
+        }
+        
+        .order-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-id {
+            font-weight: 600;
+            color: #0066c0;
+            font-size: 1.2rem;
+        }
+        
+        .order-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .order-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .status-processing {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-shipped {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .status-delivered {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .order-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .order-items {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .order-summary {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .order-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .order-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        
+        .order-item-details {
+            flex: 1;
+        }
+        
+        .order-item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .order-item-price {
+            color: #b12704;
+            font-weight: 600;
+        }
+        
+        .order-item-qty {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .price-breakdown {
+            margin-top: 20px;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .price-row.total {
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        .shipping-address {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .address-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .order-btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+            background: white;
+        }
+        
+        .order-btn.primary {
+            background: #0066c0;
+            color: white;
+            border-color: #0066c0;
+        }
+        
+        .order-btn.danger {
+            background: #b12704;
+            color: white;
+            border-color: #b12704;
+        }
+        
+        .order-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .empty-orders {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+        
+        .empty-orders i {
+            font-size: 3rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .empty-orders p {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .shop-btn {
+            padding: 12px 24px;
+            background: #0066c0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,102,192,0.2);
+        }
+        
+        .shop-btn:hover {
+            background: #0056a3;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .orders-container {
+                margin-top: 120px;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .order-details {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <span class="dotin"></span>
+            </div>
+            <div class="search-container">
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+            <div class="header-actions">
+                <div class="header-action">
+                    <i class="fa-regular fa-heart"></i>
+                   <a href="wishlist.html" style="color: white;"><p>Wishlist</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.html" style="color: white;"><p>cart</p></a>
+                </div>
+                <div class="header-action">
+                    <i class="fa-solid fa-user"></i>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container-nav">
+            <ul>
+               
+                <li class="border-white"><a href="index.html">Home</a></li>
+                  
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
+                <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
+                <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
+                <li class="border-white"><a href="electronics.html">Electronics</a></li>
+                <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
+                <li class="border-white"><a href="fashion.html">Fashion</a></li>
+                <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Orders Content -->
+    <div class="orders-container">
+        <h1 class="page-title">
+            <i class="fas fa-shopping-bag"></i> My Orders
+        </h1>
+        
+        <div id="orders-list">
+            <!-- Orders will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/akheel____007/?next=%2F"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'signin.html';
+                return;
+            }
+
+            // Load orders for the current user
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = orders.filter(order => 
+                order.userEmail === currentUser.email
+            );
+            
+            const ordersList = document.getElementById('orders-list');
+            
+            if (userOrders.length === 0) {
+                ordersList.innerHTML = `
+                    <div class="empty-orders">
+                        <i class="fas fa-box-open"></i>
+                        <p>You haven't placed any orders yet.</p>
+                        <button class="shop-btn" onclick="window.location.href='index.html'">Start Shopping</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort orders by date (newest first)
+            userOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Render each order
+            userOrders.forEach((order, index) => {
+                const orderDate = new Date(order.date);
+                const formattedDate = orderDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                // Determine order status
+                const status = order.status || 'processing';
+                const statusText = status.charAt(0).toUpperCase() + status.slice(1);
+                
+                // Calculate total items
+                const totalItems = order.items.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                
+                const orderElement = document.createElement('div');
+                orderElement.className = 'order-card';
+                orderElement.innerHTML = `
+                    <div class="order-header">
+                        <div>
+                            <span class="order-id">Order #${order.id || index + 1}</span>
+                            <span class="order-date">Placed on ${formattedDate}</span>
+                        </div>
+                        <div class="order-status status-${status}">${statusText}</div>
+                    </div>
+                    
+                    <div class="order-details">
+                        <div class="order-items">
+                            <h3>${totalItems} ${totalItems === 1 ? 'Item' : 'Items'}</h3>
+                            ${order.items.map(item => `
+                                <div class="order-item">
+                                    <img src="${item.image}" alt="${item.name}" class="order-item-img">
+                                    <div class="order-item-details">
+                                        <div class="order-item-title">${item.name}</div>
+                                        <div class="order-item-price">${formatCurrency(item.price)}</div>
+                                        <div class="order-item-qty">Qty: ${item.quantity || 1}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div class="price-breakdown">
+                                <div class="price-row">
+                                    <span>Subtotal:</span>
+                                    <span>${formatCurrency(order.totals.subtotal)}</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Shipping:</span>
+                                    <span>${formatCurrency(order.totals.shipping)}</span>
+                                </div>
+                                ${order.totals.tax ? `
+                                <div class="price-row">
+                                    <span>Tax:</span>
+                                    <span>${formatCurrency(order.totals.tax)}</span>
+                                </div>
+                                ` : ''}
+                                ${order.totals.discount ? `
+                                <div class="price-row">
+                                    <span>Discount:</span>
+                                    <span>-${formatCurrency(order.totals.discount)}</span>
+                                </div>
+                                ` : ''}
+                                <div class="price-row total">
+                                    <span>Total:</span>
+                                    <span>${formatCurrency(order.totals.total)}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="shipping-address">
+                                <div class="address-title">Shipping Address</div>
+                                <div>${order.shippingAddress.firstName} ${order.shippingAddress.lastName}</div>
+                                <div>${order.shippingAddress.address}</div>
+                                <div>${order.shippingAddress.city}, ${order.shippingAddress.state} ${order.shippingAddress.zip}</div>
+                                <div>${order.shippingAddress.country}</div>
+                                <div>Phone: ${order.shippingAddress.phone}</div>
+                            </div>
+                            
+                            <div class="order-actions">
+                                <button class="order-btn primary" onclick="trackOrder(${order.id || index})">
+                                    <i class="fas fa-truck"></i> Track Order
+                                </button>
+                                <button class="order-btn" onclick="viewInvoice(${order.id || index})">
+                                    <i class="fas fa-file-invoice"></i> View Invoice
+                                </button>
+                                ${status === 'processing' ? `
+                                    <button class="order-btn danger" onclick="cancelOrder(${order.id || index})">
+                                        <i class="fas fa-times"></i> Cancel Order
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                ordersList.appendChild(orderElement);
+            });
+        });
+        
+        function formatCurrency(amount) {
+            return '₹' + amount.toFixed(2);
+        }
+        
+        function trackOrder(orderId) {
+            alert(`Tracking order #${orderId}. In a real app, this would show tracking information.`);
+        }
+        
+        function viewInvoice(orderId) {
+            alert(`Viewing invoice for order #${orderId}. In a real app, this would generate/download an invoice.`);
+        }
+        
+        function cancelOrder(orderId) {
+            if (confirm('Are you sure you want to cancel this order?')) {
+                const orders = JSON.parse(localStorage.getItem('orders'));
+                const orderIndex = orders.findIndex(order => order.id === orderId);
+                if (orderIndex !== -1) {
+                    orders[orderIndex].status = 'cancelled';
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    alert('Order has been cancelled.');
+                    location.reload();
+                }
+            }
+        }
+    </script>
+    <script>
+        // Update account info in header
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            const accountInfo = document.getElementById('account-info');
+
+            if (user) {
+                accountInfo.innerHTML = `
+                    <a href="account.html" style="color: white;">
+                        <p>${user.name.split(' ')[0]}</p>
+                    </a>
+                `;
+            } else {
+                accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+            }
+        });
+    </script>
+    <script src="auth.js"></script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      const accountInfo = document.getElementById('account-info');
+    
+      if (user) {
+        accountInfo.innerHTML = `
+          <a href="account.html" style="color: white;">
+            <p>${user.name.split(' ')[0]}</p>
+          </a>
+        `;
+      } else {
+        accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+      }
+    });
+    
+    </script>
+</body>
+</html>

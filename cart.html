@@ -187,6 +187,7 @@
             border-radius: 8px;
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- Your existing header -->
@@ -197,11 +198,21 @@
                 <span class="dotin"></span>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for products..." />
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
             </div>
+         
             <div class="header-actions">
                 <div class="header-action">
                     <i class="fa-regular fa-heart"></i>
@@ -213,25 +224,26 @@
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
-
-    <!-- Your existing navigation -->
     <nav class="nav">
         <div class="container-nav">
             <ul>
                 <li class="border-white"><a href="index.html">Home</a></li>
-                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+                  
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
                 <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
                 <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
                 <li class="border-white"><a href="electronics.html">Electronics</a></li>
                 <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
                 <li class="border-white"><a href="fashion.html">Fashion</a></li>
                 <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
             </ul>
         </div>
     </nav>
@@ -253,8 +265,9 @@
                 
                 <div class="cart-summary">
                     <h2>Order Summary</h2>
-                    <p id="subtotal">Subtotal (0 items): £0.00</p>
-                    <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+                    <p id="subtotal">Subtotal (0 items): ₹0.00</p>
+                    <!-- Change this line in cart.html -->
+<button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
                 </div>
             </div>
         </div>
@@ -263,7 +276,7 @@
     <!-- Your existing footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
@@ -281,7 +294,7 @@
             
             if (cart.length === 0) {
                 emptyCartMessage.style.display = 'block';
-                subtotalElement.textContent = 'Subtotal (0 items): £0.00';
+                subtotalElement.textContent = 'Subtotal (0 items): ₹0.00';
                 return;
             } else {
                 emptyCartMessage.style.display = 'none';
@@ -334,7 +347,7 @@
             });
             
             // Update subtotal
-            subtotalElement.textContent = `Subtotal (${totalItems} items): £${subtotal.toFixed(2)}`;
+            subtotalElement.textContent = `Subtotal (${totalItems} items): ₹${subtotal.toFixed(2)}`;
             
             // Add event listeners to buttons
             document.querySelectorAll('.remove-btn').forEach(button => {
@@ -359,14 +372,18 @@
                 });
             });
             
-            // Checkout button
-            document.getElementById('checkout-btn').addEventListener('click', function() {
-                if (cart.length === 0) {
-                    alert('Your cart is empty!');
-                    return;
-                }
-                alert('Proceeding to checkout!');
-            });
+         // Replace the checkout button event listener in cart.html
+document.getElementById('checkout-btn').addEventListener('click', function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+    
+    // Store the cart items for checkout
+    localStorage.setItem('cartCheckoutItems', JSON.stringify(cart));
+    window.location.href = "cartcheckout.html";
+});
             
             function updateQuantity(productId, change) {
                 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -391,5 +408,24 @@
             }
         });
     </script>
+    <script src="auth.js"></script>
+    <script src="auth.js"></script>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const accountInfo = document.getElementById('account-info');
+
+  if (user) {
+    accountInfo.innerHTML = `
+      <a href="account.html" style="color: white;">
+        <p>${user.name.split(' ')[0]}</p>
+      </a>
+    `;
+  } else {
+    accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+  }
+});
+
+</script>
 </body>
 </html>

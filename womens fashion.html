@@ -46,10 +46,20 @@
                 <span class="dotin"></span>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for products..." />
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
             </div>
             <div class="header-actions">
                 <div class="header-action">
@@ -62,8 +72,9 @@
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
@@ -72,14 +83,16 @@
             <ul>
       
                 <li class="border-white"><a href="index.html">Home</a></li>
-                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+                  
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
                 <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
                 <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
                 <li class="border-white"><a href="electronics.html">Electronics</a></li>
                 <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
                 <li class="border-white"><a href="fashion.html">Fashion</a></li>
                 <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
             </ul>
     </nav>
 
@@ -88,7 +101,7 @@
             <img src="https://images.meesho.com/images/products/286027106/hzjnp_400.webp" alt="image">
             <h3>Best silk soft printed saree(georget)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">2000rs <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">2000rs  </div>
             <div class="delivery">40rs delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -100,7 +113,7 @@
             <h3>Chitrarekha Drishya Sarees</h3>
             <div class="rating">★★★★☆ (379)</div>
             <div class="price">1500rs</div>
-            <div class="delivery">£17.16 delivery Wed, 2 Apr</div>
+            <div class="delivery">₹17.16 delivery Wed, 2 Apr</div>
             <div class="stock">Only 14 left in stock</div>
             <div class="options">1 other colour/pattern</div>
             <button>Add to basket</button>
@@ -111,7 +124,7 @@
             <img src="https://images.meesho.com/images/products/326810778/vbpzu_400.webp" alt="QUKITEL C51">
             <h3>BANDHANI SAREE</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">1799rs <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">1799rs  </div>
             <div class="delivery">40rs delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -122,8 +135,8 @@
             <img src="https://images.meesho.com/images/products/101971295/5jbb0_400.webp" alt="QUKITEL C51">
             <h3>Hathi Design Silk Saree (Hathi Saree)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">1000rs<span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">1000rs </div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -133,7 +146,7 @@
             <img src="https://images.meesho.com/images/products/368255807/cz303_400.webp" alt="QUKITEL C51">
             <h3>Print Daily Wear Georgette Saree</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">1499rs <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">1499rs  </div>
             <div class="delivery">40rs delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -144,7 +157,7 @@
             <img src="https://images.meesho.com/images/products/6908023/yprtp_400.webp" alt="QUKITEL C51">
             <h3>best satin silk printed daily wear saree</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">1349rs <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">1349rs  </div>
             <div class="delivery">40rs delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -155,7 +168,7 @@
             <img src="https://images.meesho.com/images/products/152597956/klzgh_400.webp" alt="QUKITEL C51">
             <h3>Jivika Drishya Kurtis</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">rs1459 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">rs1459  </div>
             <div class="delivery">50rs delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
@@ -166,8 +179,8 @@
             <img src="https://images.meesho.com/images/products/321750698/xyw98_400.webp" alt="QUKITEL C51">
             <h3>new fashion western dress</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99  </div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -177,8 +190,8 @@
             <img src="https://images.meesho.com/images/products/417539729/rdbtc_400.webp" alt="QUKITEL C51">
             <h3>bandhej sarees</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99  </div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -188,8 +201,8 @@
             <img src="https://images.meesho.com/images/products/384916068/fsdct_400.webp" alt="QUKITEL C51">
             <h3>big size white embroidery kurti</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99  </div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -199,8 +212,8 @@
             <img src="https://images.meesho.com/images/products/359484015/j22ge_400.webp" alt="QUKITEL C51">
             <h3>Fashionable Cotton Slub Dijital Print Anarkali Kurti For Women</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99  </div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -210,8 +223,8 @@
             <img src="https://images.meesho.com/images/products/414651751/16xus_400.webp" alt="QUKITEL C51">
             <h3>Jivika Drishya Kurtis</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99  </div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
             <button>Add to wishlist</button>
@@ -223,7 +236,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
@@ -234,5 +247,23 @@
     <script src="javascript.js"></script>
     <script src = "cart.js"></script>
     <script src = "wishlist.js"></script>
+    <script src="auth.js"></script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      const accountInfo = document.getElementById('account-info');
+    
+      if (user) {
+        accountInfo.innerHTML = `
+          <a href="account.html" style="color: white;">
+            <p>${user.name.split(' ')[0]}</p>
+          </a>
+        `;
+      } else {
+        accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+      }
+    });
+    
+    </script>
 </body>
 </html>

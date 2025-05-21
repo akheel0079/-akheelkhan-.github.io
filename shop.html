@@ -87,7 +87,7 @@ body {
             transition: background-color 0.3s ease;
         }
         .category-card button:hover {
-            background-color: #e0a800;
+            background-color: #35e0d2;
         }
         .header {
             background-color: #222;
@@ -160,10 +160,20 @@ body {
                 <span class="dotin"></span>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for products..." />
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
             </div>
             <div class="header-actions">
                 <div class="header-action">
@@ -176,8 +186,9 @@ body {
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
@@ -189,14 +200,16 @@ body {
         <ul>
       
             <li class="border-white"><a href="index.html">Home</a></li>
-            <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-            <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+              
+            <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
             <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
             <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
             <li class="border-white"><a href="electronics.html">Electronics</a></li>
             <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
             <li class="border-white"><a href="fashion.html">Fashion</a></li>
             <li class="border-white"><a href="accessories.html">Accessories</a></li>
+            <li class="border-white"><a href="orders.html">Orders</a></li>
+            <li class="border-white"><a href="family.html">Family</a></li>
         </ul>
 
 </nav>
@@ -230,27 +243,27 @@ body {
         </div>
         <div class="category-card">
             <img src="images/fashion.jpg" alt="Fashion">
-            <h3>Fashion</h3>
+            <h3>New products to be added</h3>
             <button onclick="window.location.href='fashion.html'">Shop Now</button>
         </div>
         <div class="category-card">
             <img src="images/fashion.jpg" alt="Fashion">
-            <h3>Fashion</h3>
+            <h3>New products to be added</h3>
             <button onclick="window.location.href='fashion.html'">Shop Now</button>
         </div>
         <div class="category-card">
             <img src="images/fashion.jpg" alt="Fashion">
-            <h3>Fashion</h3>
+            <h3>New products to be added</h3>
             <button onclick="window.location.href='fashion.html'">Shop Now</button>
         </div>
         <div class="category-card">
             <img src="images/fashion.jpg" alt="Fashion">
-            <h3>Fashion</h3>
+            <h3>New products to be added</h3>
             <button onclick="window.location.href='fashion.html'">Shop Now</button>
         </div>
         <div class="category-card">
             <img src="images/fashion.jpg" alt="Fashion">
-            <h3>Fashion</h3>
+            <h3>New products to be added</h3>
             <button onclick="window.location.href='fashion.html'">Shop Now</button>
         </div>
     </div>
@@ -260,7 +273,7 @@ body {
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
@@ -272,5 +285,23 @@ body {
     <!-- JavaScript -->
     <script src="javascript.js"></script>
     <script src = "cart.js"></script>
+    <script src="auth.js"></script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      const accountInfo = document.getElementById('account-info');
+    
+      if (user) {
+        accountInfo.innerHTML = `
+          <a href="account.html" style="color: white;">
+            <p>${user.name.split(' ')[0]}</p>
+          </a>
+        `;
+      } else {
+        accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+      }
+    });
+    
+    </script>
 </body>
 </html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In - Quadcore</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #0066c0;
+      --secondary: #e47911;
+      --dark: #1a1a2e;
+      --light: #f5f5f5;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: var(--light);
+      color: #333;
+    }
+
+    .auth-container {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 2rem;
+      display: flex;
+      min-height: 60vh;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      background: white;
+      overflow: hidden;
+    }
+
+    .auth-hero {
+      flex: 1;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      padding: 3rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .auth-hero p {
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .auth-form-container {
+      width: 400px;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-form {
+      width: 100%;
+    }
+
+    .form-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-logo img {
+      height: 50px;
+    }
+
+    .form-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0,102,192,0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(229,46,113,0.3);
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: #666;
+    }
+
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .auth-container {
+        flex-direction: column;
+        margin: 40px auto;
+      }
+
+      .auth-hero {
+        display: none;
+      }
+
+      .auth-form-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-hero">
+      <h1>Welcome Back</h1>
+      <p>Log in to access your account, track orders, and manage your wishlist and profile.</p>
+    </div>
+
+    <div class="auth-form-container">
+      <div class="auth-form">
+        <div class="form-logo">
+          <img src="images/quad.jpg" alt="Quadcore Logo">
+        </div>
+
+        <div class="form-header">
+          <h2>Sign In</h2>
+          <p>Access your Quadcore account</p>
+        </div>
+
+        <form id="signinForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+
+        <div class="form-footer">
+          <p>New to Quadcore? <a href="signup.html">Create an account</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function authenticateUser(email, password) {
+      const stored = localStorage.getItem('user_' + email);
+      if (!stored) return { success: false, message: 'User not found' };
+    
+      const user = JSON.parse(stored);
+      if (user.password !== password) {
+        return { success: false, message: 'Incorrect password' };
+      }
+    
+      return { success: true, user };
+    }
+    
+    document.getElementById('signinForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+    
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+    
+      const result = authenticateUser(email, password);
+    
+      if (!result.success) {
+        alert(result.message);
+      } else {
+        localStorage.setItem('currentUser', JSON.stringify(result.user));
+        window.location.href = 'account.html';
+      }// Replace the signin form handler with:
+document.getElementById('signinForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const userJson = localStorage.getItem('user_' + email);
+
+  if (!userJson) {
+    alert('User not found');
+    return;
+  }
+
+  const user = JSON.parse(userJson);
+  if (user.password !== password) {
+    alert('Incorrect password');
+    return;
+  }
+
+  // Store user data without password
+  const {password: _, ...userData} = user;
+  localStorage.setItem('currentUser', JSON.stringify(userData));
+  
+  window.location.href = 'account.html';
+});
+    });
+    </script>
+    
+    
+
+</body>
+</html>

@@ -46,10 +46,20 @@
                 <span class="dotin"></span>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for products..." />
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
             </div>
             <div class="header-actions">
                 <div class="header-action">
@@ -62,8 +72,9 @@
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
@@ -75,8 +86,8 @@
         <ul>
       
             <li class="border-white"><a href="index.html">Home</a></li>
-            <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-            <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+              
+            <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
             <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
             <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
             <li class="border-white"><a href="electronics.html">Electronics</a></li>
@@ -93,8 +104,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -102,8 +113,8 @@
             <img src="images/laptop.jpg" alt="UMIDIGI A15C">
             <h3>UMIDIGI A15C NFC Mobile Phone</h3>
             <div class="rating">★★★★☆ (379)</div>
-            <div class="price">£129.99</div>
-            <div class="delivery">£17.16 delivery Wed, 2 Apr</div>
+            <div class="price">₹129.99</div>
+            <div class="delivery">₹17.16 delivery Wed, 2 Apr</div>
             <div class="stock">Only 14 left in stock</div>
             <div class="options">1 other colour/pattern</div>
             <button>Add to basket</button>
@@ -112,8 +123,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -121,8 +132,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -130,8 +141,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -139,8 +150,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -148,8 +159,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -157,8 +168,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -166,8 +177,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -175,8 +186,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -184,8 +195,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -193,8 +204,8 @@
             <img src="images/hero.jpg" alt="QUKITEL C51">
             <h3>QUKITEL C51 Sim-Free & Unlocked Mobile Phones</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">£99.99 <span class="discount">Save 5% with voucher</span></div>
-            <div class="delivery">£17.62 delivery Wed, 2 Apr</div>
+            <div class="price">₹99.99 <span class="discount">Save 5% with voucher</span></div>
+            <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
         </div>
@@ -215,5 +226,29 @@
 
     <!-- JavaScript -->
     <script src="javascript.js"></script>
+    <script src="auth.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = checkAuth();
+        const accountInfo = document.getElementById('account-info');
+        
+        if (user) {
+            // User is logged in - show their name and dropdown
+            accountInfo.innerHTML = `
+                <div class="account-dropdown">
+                    <p>${user.name}</p>
+                    <div class="dropdown-content">
+                        <a href="account.html">My Account</a>
+                        <a href="orders.html">My Orders</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User not logged in - show regular account link
+            accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+        }
+    });
+</script>
 </body>
 </html>

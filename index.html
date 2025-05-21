@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/quad.jpg" />
     <title>Quadcore uid</title>
-
-    <!--css file-->
     <link rel="stylesheet" href="style.css" />
-
-    <!--font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        /* === NEXT-LEVEL WELCOME SECTION === */
+    <style>  
         .hero {
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             color: white;
@@ -113,8 +106,7 @@
         .hero-btn:hover::before {
             opacity: 1;
         }
-        
-        /* === FUTURISTIC SLIDER === */
+    
         .image-container {
             position: relative;
             max-width: 1400px;
@@ -231,8 +223,150 @@
         transform: scale(1.1); /* Only scale, no position change */
         box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
+    /* Premium crown styling */
+.fa-crown {
+    color: gold;
+    text-shadow: 0 0 5px rgba(255,215,0,0.5);
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.header-action:hover .fa-crown {
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Premium badge for account section */
+.premium-badge {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.premium-badge i {
+    font-size: 0.7rem;
+}
+/* Loading Animation Styles */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loader-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.quadcore-loader {
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+
+.quadcore-loader .quadrant {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    animation: quadcorePulse 2.4s infinite ease-in-out;
+}
+
+.quadcore-loader .quadrant:nth-child(1) {
+    top: 0;
+    left: 0;
+    background: #ff8a00;
+    animation-delay: 0s;
+}
+
+.quadcore-loader .quadrant:nth-child(2) {
+    top: 0;
+    right: 0;
+    background: #e52e71;
+    animation-delay: 0.2s;
+}
+
+.quadcore-loader .quadrant:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    background: #0f0c29;
+    animation-delay: 0.4s;
+}
+
+.quadcore-loader .quadrant:nth-child(4) {
+    bottom: 0;
+    left: 0;
+    background: #302b63;
+    animation-delay: 0.6s;
+}
+
+@keyframes quadcorePulse {
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(255,255,255,0.4);
+    }
+}
+
+.loader-text {
+    color: white;
+    margin-top: 30px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: textPulse 2s infinite ease-in-out;
+}
+
+.loader-progress {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loader-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 0.7;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(255,255,255,0.6);
+    }
+}
         
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -266,11 +400,13 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <a href="cart.html" style="color: white;"><p>cart</p></a>
                 </div>
-                <!-- In your header section, update the account link -->
-<div class="header-action">
-    <i class="fa-solid fa-user"></i>
-    <a href="signin.html" style="color: white;"><p>Account</p></a>
-</div>
+        
+               <div class="header-action">
+                <i class="fa-solid fa-user"></i>
+                 <div id="account-info">
+                 <a href="signin.html" style="color: white;"><p>Account</p></a>
+                 </div>
+               </div>
             </div>
         </div>
     </header>
@@ -281,19 +417,21 @@
             <ul>
                 <li class="border-white" id="open-nav-sidebar">
                     <span class="open-nav-slider">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class=""></i>
             
                     </span>
                 </li>
                 <li class="border-white"><a href="index.html">Home</a></li>
-                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+             
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
                 <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
                 <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
                 <li class="border-white"><a href="electronics.html">Electronics</a></li>
                 <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
                 <li class="border-white"><a href="fashion.html">Fashion</a></li>
                 <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
             </ul>
         </div>
     </nav>
@@ -302,7 +440,6 @@
 <br>
 <br>
 
-    <!-- === ULTRA-STYLISH WELCOME SECTION === -->
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Quadcore</h1>
@@ -331,7 +468,6 @@
         </button>
     </div>
 
-    <!-- === PREMIUM IMAGE SLIDER === -->
     <section>
         <div class="image-container">
             <div class="image-list">
@@ -371,7 +507,7 @@
     <main class="main">
         <div class="card-product-container">
             <div class="card-product">
-                <h2>Up to 60% off | Styles for Men</h2>
+                <h2>Fashion</h2>
                 <div class="card-product-nested-card">
                     <div class="card-nested">
                         <img
@@ -380,21 +516,21 @@
                     </div>
                     <div class="card-nested">
                         <img
-                            src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PF_MF/MF-3-186-116._SY116_CB636110853_.jpg" />
-                        <p>Watches</p>
+                            src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTpXkA9h7hi3qOzRx8nkwTWy4qEtR1T6Yt3EKocqjia5qEq7_aJGTYZhsxLd5m-f6WmI0kJrok8ps-SeOBrQT9MJJwLuyZH00ApZcLQ-cs42rmF4PSicJrK" />
+                        <p>Mens Fashion</p>
                     </div>
                     <div class="card-nested">
                         <img
-                            src="https://wallpapercave.com/wp/wp2896922.jpg" />
-                        <p>Footwear</p>
+                            src="https://images.meesho.com/images/products/286027106/hzjnp_400.webp" />
+                        <p>Womens Fashion</p>
                     </div>
                     <div class="card-nested">
                         <img
-                            src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PF_MF/MF-4-186-116._SY116_CB636110853_.jpg" />
-                        <p>Bags & language</p>
+                            src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQupz7elln5O74o6Y5wYpLPHutgRGzKJTMk60MyaNcX8BKO5PLj5_Z8Dt0vR5zSMLeNw561ZGfJRDpUKid-B-VyeGGoqmSAAUYnlxgktH-vWoUvKe88pFkhpA" />
+                        <p>Kids Fashion</p>
                     </div>
                 </div>
-               <a href="/products.html"><button class="card-product-btn">see more</button></a>
+               <a href="fashion.html"><button class="card-product-btn">see more</button></a>
             </div>
             <div class="card-product">
                 <h2>Redefine your living room</h2>
@@ -447,7 +583,7 @@
                         <p>Fashion</p>
                     </div>
                 </div>
-              <a href="toprated.html" > <button class="card-product-btn2">see more</button></a>
+              <a href="todaysdeal.html" > <button class="card-product-btn2">see more</button></a>
             </div>
             <div class="card-product">
                 <h2>Electronics</h2>
@@ -458,7 +594,7 @@
                     <p>Home essentials</p>
                 </div>
             </div>
-           <a href="electronics.html"> <button class="card-product-btn3">see more</button></a>
+           <a href="electronics.html"> <button class="card-product-btn3">Visit our electronics store</button></a>
         </div>
     </div>
 
@@ -468,7 +604,7 @@
 <section class="today_deals_container">
     <div class="today_deals_heading">
         <h1>Today's Deals</h1>
-        <p><a href="#">See all deals</a></p>
+        <p><a href="todaysdeal.html">See all deals</a></p>
     </div>
 
     <div class="today_deals_product_container">
@@ -535,6 +671,56 @@
 <script src ="search.js"></script>
 <script src="javascript.js" type="module"></script>
 <script src = "search.js"></script>
+<script src="auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const accountInfo = document.getElementById('account-info');
+
+  if (user) {
+    accountInfo.innerHTML = `
+      <a href="account.html" style="color: white; display: flex; align-items: center; gap: 5px;">
+        <p>${user.name.split(' ')[0]}</p>
+        ${user.membership && user.membership.isPremium ? 
+          '<i class="fas fa-crown" style="color: gold; font-size: 0.8em; text-shadow: 0 0 5px rgba(255,215,0,0.5);"></i>' : ''}
+      </a>
+    `;
+  } else {
+    accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+  }
+});
+
+</script>
+<script>
+    // Loading Animation Script
+    document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.getElementById('loader');
+        const progressBar = document.getElementById('progressBar');
+        
+        // Simulate loading progress (replace with actual loading logic)
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                
+                // Hide loader when content is loaded
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    
+                    // Remove loader from DOM after animation completes
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }, 300);
+            }
+            progressBar.style.width = `${progress}%`;
+        }, 200);
+        
+    
+    });
+    </script>
 <footer class="footer">
     <div class="footer-content">
         <p>&copy; 2025 Quadcode. All rights reserved.</p>
@@ -546,5 +732,16 @@
     </div>
 </footer>
 </body>
-
+<div class="loader-container" id="loader">
+    <div class="quadcore-loader">
+        <div class="quadrant"></div>
+        <div class="quadrant"></div>
+        <div class="quadrant"></div>
+        <div class="quadrant"></div>
+    </div>
+    <div class="loader-text">Quadcore</div>
+    <div class="loader-progress">
+        <div class="loader-progress-bar" id="progressBar"></div>
+    </div>
+</div>
 </html>

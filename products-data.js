@@ -1,366 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details - Quadcore</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #0066c0;
-            --accent: #ff8a00;
-            --dark: #1a1a2e;
-            --light: #f5f5f5;
-            --card-bg: #fff;
-            --text: #333;
-            --light-text: #777;
-            --success: #067d62;
-            --danger: #b12704;
-        }
-        
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--light);
-            color: var(--text);
-        }
-        
-        .product-detail-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .product-image {
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .product-image img {
-            width: 100%;
-            max-height: 350px;
-            object-fit: contain;
-        }
-        
-        .image-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--danger);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-        
-        .product-info {
-            flex: 1;
-            min-width: 300px;
-            padding: 10px;
-        }
-        
-        .product-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .product-rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .stars {
-            color: #FFD700;
-            margin-right: 8px;
-        }
-        
-        .rating-count {
-            color: var(--primary);
-            font-size: 0.9em;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        
-        .price-section {
-            margin-bottom: 20px;
-            padding: 15px 0;
-        }
-        
-        .current-price {
-            font-size: 1.8rem;
-            color: var(--danger);
-            font-weight: 600;
-        }
-        
-        .original-price {
-            text-decoration: line-through;
-            color: var(--light-text);
-            margin-left: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .discount {
-            color: var(--success);
-            font-size: 1rem;
-            margin-left: 10px;
-            font-weight: 600;
-        }
-        
-        .delivery-info {
-            color: var(--success);
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .stock-info {
-            color: var(--danger);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        .product-actions {
-            display: flex;
-            gap: 15px;
-            margin: 25px 0;
-        }
-        
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .add-to-cart {
-            background: #f0c14b;
-            border: 1px solid;
-            border-color: #a88734 #9c7e31 #846a29;
-            color: #111;
-        }
-        
-        .add-to-cart:hover {
-            background: #ddb347;
-        }
-        
-        .buy-now {
-            background: #ff8a00;
-            color: white;
-            border: none;
-        }
-        
-        .buy-now:hover {
-            background: #e67300;
-        }
-        
-        .product-tabs {
-            margin-top: 30px;
-        }
-        
-        .tab-header {
-            display: flex;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .tab-btn {
-            padding: 12px 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #555;
-        }
-        
-        .tab-btn.active {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .tab-content {
-            padding: 20px 0;
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .specs-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .specs-table td {
-            padding: 12px 15px;
-            border: 1px solid #e1e1e1;
-        }
-        
-        .spec-name {
-            font-weight: 600;
-            width: 30%;
-            color: #555;
-        }
-        
-        /* Review Section Styles */
-        .reviews-container {
-            margin-top: 40px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .review-form {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-        }
-        
-        .review-form h3 {
-            margin-top: 0;
-        }
-        
-        .rating-input {
-            display: flex;
-            gap: 5px;
-            margin: 10px 0;
-        }
-        
-        .rating-star {
-            font-size: 24px;
-            color: #ddd;
-            cursor: pointer;
-        }
-        
-        .rating-star.selected {
-            color: #FFD700;
-        }
-        
-        .review-textarea {
-            width: 100%;
-            min-height: 100px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-        
-        .submit-review {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .review-list {
-            margin-top: 20px;
-        }
-        
-        .review-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .review-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-        
-        .review-author {
-            font-weight: 600;
-            margin-right: 10px;
-        }
-        
-        .review-date {
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-        
-        .review-rating {
-            color: #FFD700;
-            margin-bottom: 5px;
-        }
-        
-        @media (max-width: 768px) {
-            .product-detail-container {
-                flex-direction: column;
-                padding: 20px;
-            }
-            
-            .product-actions {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="product-detail-container" id="product-container">
-        <!-- Product content will be loaded here -->
-    </div>
-
-    <div class="reviews-container">
-        <div class="review-form">
-            <h3>Write a Review</h3>
-            <div class="rating-input" id="rating-input">
-                <span class="rating-star" data-rating="1">★</span>
-                <span class="rating-star" data-rating="2">★</span>
-                <span class="rating-star" data-rating="3">★</span>
-                <span class="rating-star" data-rating="4">★</span>
-                <span class="rating-star" data-rating="5">★</span>
-            </div>
-            <textarea class="review-textarea" id="review-text" placeholder="Share your thoughts about this product..."></textarea>
-            <button class="submit-review" id="submit-review">Submit Review</button>
-        </div>
-        
-        <div class="review-list" id="review-list">
-            <!-- Reviews will be loaded here -->
-        </div>
-    </div>
-
-    <script>
-        
-        // Product data
-        const products = {
+const products = {
     "115": {
         title: "iPhone 16 Pro Max",
         image: "https://m.media-amazon.com/images/I/61s1P+29yoL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹1,20,999.99",
-        originalPrice: "₹1,20,000",
+        price: "₹999.99",
+        originalPrice: "₹1,099.99",
         rating: "4.5",
         ratingCount: "1,585 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -394,7 +37,7 @@
     "116": {
         title: "Samsung Galaxy S24 Ultra",
         image: "https://th.bing.com/th/id/OIP.1n2MgSlbhLBZdHFqvVkAfwAAAA?w=170&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        price: "₹1,52,999.99",
+        price: "₹1,199.99",
         rating: "4.8",
         ratingCount: "2,379 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -427,7 +70,7 @@
     "117": {
         title: "Redmi Note 13 Pro 5G",
         image: "https://th.bing.com/th?id=OIP.zPAaLTDaSnBrh2eLahNtEQHaJb&w=221&h=282&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
-        price: "₹25,999.99",
+        price: "₹349.99",
         originalPrice: "₹379.99",
         rating: "4.3",
         ratingCount: "1,024 ratings",
@@ -461,7 +104,7 @@
     "4": {
         title: "Nothing Phone (2A)",
         image: "https://m.media-amazon.com/images/I/61QWVJBjFqL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹15,999.99",
+        price: "₹319.99",
         rating: "4.2",
         ratingCount: "892 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -492,8 +135,8 @@
     "5": {
         title: "iQOO Neo 9 Pro",
         image: "https://th.bing.com/th/id/OIP.GFDfH4OdkxuEZik3DR0kKQHaHa?w=176&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        price: "₹12,999.99",
-        originalPrice: "₹33519.99",
+        price: "₹499.99",
+        originalPrice: "₹519.99",
         rating: "4.7",
         ratingCount: "1,237 ratings",
         delivery: "₹12.99 delivery Wed, 2 Apr",
@@ -523,9 +166,9 @@
         ]
     },
     "6": {
-        title: "Vivo V13 Pro",
+        title: "Vivo V29 Pro",
         image: "https://th.bing.com/th/id/OIP.xE1bYSfFNUH9CRHj_DD5LQHaJF?rs=1&pid=ImgDetMain",
-        price: "₹14,999.99",
+        price: "₹599.99",
         rating: "4.4",
         ratingCount: "756 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -556,7 +199,7 @@
     "7": {
         title: "DOOGEE V Max",
         image: "https://m.media-amazon.com/images/I/81oRCjk44rL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹12,999.99",
+        price: "₹249.99",
         rating: "3.9",
         ratingCount: "483 ratings",
         delivery: "₹15.62 delivery Wed, 2 Apr",
@@ -589,7 +232,7 @@
     "8": {
         title: "UMIDIGI A15C",
         image: "https://m.media-amazon.com/images/I/71cxlQhiQqL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹18,999.99",
+        price: "₹129.99",
         rating: "3.7",
         ratingCount: "1,028 ratings",
         delivery: "₹17.62 delivery Wed, 2 Apr",
@@ -621,7 +264,7 @@
     "9": {
         title: "OnePlus 12 5G",
         image: "https://m.media-amazon.com/images/I/612ZyUm0JsL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹15,999.99",
+        price: "₹849.99",
         rating: "4.6",
         ratingCount: "3,142 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -653,7 +296,7 @@
     "10": {
         title: "ASUS ROG Phone 7",
         image: "https://m.media-amazon.com/images/I/81Vdy-mfVEL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹24,999.99",
+        price: "₹899.99",
         rating: "4.8",
         ratingCount: "1,847 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -685,7 +328,7 @@
     "11": {
         title: "Motorola Moto G85 5G",
         image: "https://m.media-amazon.com/images/I/61G8w9C7oHL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹16,999.99",
+        price: "₹279.99",
         originalPrice: "₹299.99",
         rating: "4.1",
         ratingCount: "1,562 ratings",
@@ -719,7 +362,7 @@
     "12": {
         title: "Infinix GT 10 Pro",
         image: "https://th.bing.com/th/id/OIP.BkG0am3D1vIKux_eYBB6vgAAAA?pid=ImgDet&w=159&h=339&c=7",
-        price: "₹25,999.99",
+        price: "₹229.99",
         rating: "4.0",
         ratingCount: "673 ratings",
         delivery: "₹12.99 delivery Wed, 2 Apr",
@@ -809,8 +452,8 @@
     "15": {
         title: "Emporio Armani Kids Monogram Blazer",
         image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQcrXQ3onOC11QyGvWvBlBAuunAI6Z_SDt1-hTZ0Kn1qbFGxb3ZypwV8UtYOSinyNtSpkvPoI-KBJ42xPaLrahyxXikskVf05OyQF5wfvcBU9mnqStSrF5o",
-        price: "₹6,011.18",
-        originalPrice: "₹6,999",
+        price: "₹64,011.18",
+        originalPrice: "₹69,999",
         rating: "4.7",
         ratingCount: "892 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -838,8 +481,8 @@
     "16": {
         title: "Emporio Armani Kids Intarsia-knit Cotton Jumper",
         image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRqS7kldgg7TYgMZ5Jjx7L--aM4n3hvkimH-b2evQnkgGs07gZyOuwJsRJ6HYTTFQ41QxG-pwPTnNbO-DQdCGNe2MdabnphhA92JLok-yiUi6vN7UWXNW-S",
-        price: "₹2,271.97",
-        originalPrice: "₹2,999",
+        price: "₹26,271.97",
+        originalPrice: "₹28,999",
         rating: "4.6",
         ratingCount: "1,024 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -866,8 +509,8 @@
     "17": {
         title: "Emporio Armani Striped Seersucker Suit",
         image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSw1ED6UWnV-96bhciSvpR5eYPj-GgMixH0wZ4mLIFu4UATLWN8fnFx5K9JEa5kCuMon90CkXWIp3l08RYGKznUb6vSfVe76I5j9TiMX4RTA3p_8fgrsh7A",
-        price: "₹7,104.38",
-        originalPrice: "₹8,999",
+        price: "₹77,104.38",
+        originalPrice: "₹84,999",
         rating: "4.8",
         ratingCount: "237 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -895,7 +538,7 @@
     "18": {
         title: "Emporio Armani Kids Two-Piece Dinner Suit",
         image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTqwP0okYHY-oAm9S5m-ggd1l7vteFL-jbRc2wB5ms38D5BCONoV73BmcanFVgQMzhOnowjnTP7eA1sIjkg5xN1DW2vc4mh636vv-r1e2Vye7dRnvXl33eh",
-        price: "₹3,619.10",
+        price: "₹87,887.01",
         originalPrice: "₹95,999",
         rating: "4.9",
         ratingCount: "156 ratings",
@@ -924,7 +567,7 @@
     "19": {
         title: "Emporio Armani Kids Logo-Jacquard Dress",
         image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ06elH6Piw0BwtZaS5xFzfEIK9oaivxJPXN4lMCV9H_zUihckr9PT_Gpk-SVoMi3s7DwWVqx_vgdNxoX4X_DFmOFbJsO4j_3Z89F_ijNYauTIF1laIN70HMw",
-        price: "₹1,000",
+        price: "₹23,619.10",
         originalPrice: "₹25,999",
         rating: "4.4",
         ratingCount: "756 ratings",
@@ -952,7 +595,7 @@
     "20": {
         title: "ARMANI JUNIOR Blended Regular Fit Dress",
         image: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjnpbbKn0DN2Lz0K0LUqy_tsThM4h_yOLWMowozXlbOPi8lUzvM4PKtGWYpW0C1uaaBlX9eC4SMuv3m-6wG6C-ZVyuwO0tZcqpHgj0fpHqz5hU_apXYiXFxg",
-        price: "₹1,000",
+        price: "₹11,000",
         originalPrice: "₹12,500",
         rating: "4.2",
         ratingCount: "1,024 ratings",
@@ -981,8 +624,8 @@
     "21": {
         title: "Dress EMPORIO ARMANI kids",
         image: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSKwQ8YBJCWNK0cyZLfZ84VoV6MoqzQUvD9EIejwKiijGXXw5nbgKL5NBhg1f0ByNyBmTOIXodQ1XRVQB_01g8zkrGDAjzFRWERUZmW0ISnZI2ryOalU6uYZg",
-        price: "₹5,037.08",
-        originalPrice: "₹6,499",
+        price: "₹15,037.08",
+        originalPrice: "₹16,499",
         rating: "4.5",
         ratingCount: "892 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1010,8 +653,8 @@
     "22": {
         title: "ARMANI JUNIOR EA Jersey Fleece Dress",
         image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRk-kEHZkNQLkQCVMY0CXg7OHWbTKWOKzUmegph8kWnkHmOp6QwpX5Yrhs8X-wigu8Jgr61akxOXFgJLIo4Ff-laYsoDoa3YFisl7Hhn6Hlw_IQM3lb3zxR1w",
-        price: "₹9,000",
-        originalPrice: "₹10,000",
+        price: "₹19,000",
+        originalPrice: "₹21,000",
         rating: "4.3",
         ratingCount: "1,237 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1067,8 +710,8 @@
     "24": {
         title: "Armani Junior Silk Floral Print Dress",
         image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTQZah5lySBsS06Jhw5nvdD1E3KbKlxIHTzEe60tQkth7rf662GqHwnpn4z2EViANZSFWbSA0Rol2aL8IWMus_lnzxrZeX02dJUbbwqwBdoKrE5khfxD7Ik",
-        price: "₹1,079",
-        originalPrice: "₹3,499",
+        price: "₹21,079",
+        originalPrice: "₹23,499",
         rating: "4.7",
         ratingCount: "2,379 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1096,8 +739,8 @@
     "25": {
         title: "Apple 2024 MacBook Pro Laptop with M4 chip",
         image: "https://m.media-amazon.com/images/I/618r76w5dGL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹1,50,999.99",
-        originalPrice: "₹1,70,599.99",
+        price: "₹1,499.99",
+        originalPrice: "₹1,599.99",
         rating: "4.8",
         ratingCount: "2,142 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1128,7 +771,7 @@
     "26": {
         title: "ACEMAGIC 15.6\" Laptop",
         image: "https://m.media-amazon.com/images/I/716uMsfCxbL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹70,999.99",
+        price: "₹299.99",
         rating: "4.1",
         ratingCount: "483 ratings",
         delivery: "₹15.62 delivery Wed, 2 Apr",
@@ -1158,8 +801,8 @@
     "27": {
         title: "Lenovo Tab Plus 8GB/128GB Tablet",
         image: "https://m.media-amazon.com/images/I/71J0O9IHi7L._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹57,999.99",
-        originalPrice: "₹60,379.99",
+        price: "₹349.99",
+        originalPrice: "₹379.99",
         rating: "4.3",
         ratingCount: "1,024 ratings",
         delivery: "₹9.99 delivery Wed, 2 Apr",
@@ -1190,8 +833,8 @@
     "28": { // Update this ID to your next available number
         title: "ASUS ROG Zephyrus M16 Gaming Laptop 2023",
         image: "https://m.media-amazon.com/images/I/6177weNRfFL._AC_SL1221_.jpg",
-        price: "₹50,999.99",
-        originalPrice: "₹52,499.99",
+        price: "₹2,199.99",
+        originalPrice: "₹2,499.99",
         rating: "4.8",
         ratingCount: "1,847 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1229,8 +872,8 @@
     "29": { // Update ID number as needed
         title: "ASUS TUF Gaming A15 (2023) 15.6\" FHD Gaming Laptop",
         image: "https://m.media-amazon.com/images/I/61nTNphSBvL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹75,999.99",
-        originalPrice: "₹77,249.99",
+        price: "₹1,099.99",
+        originalPrice: "₹1,249.99",
         rating: "4.6",
         ratingCount: "2,143 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1270,7 +913,7 @@
     "30": {
         title: "Dell Inspiron 14 2-in-1 Laptop",
         image: "https://m.media-amazon.com/images/I/71qRWDn7yoL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹88,999.99",
+        price: "₹799.99",
         rating: "4.5",
         ratingCount: "2,379 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1299,7 +942,7 @@
     "31": {
         title: "Lenovo IdeaPad Gaming 3",
         image: "https://m.media-amazon.com/images/I/71S1eXJmIAL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹66,999.99",
+        price: "₹899.99",
         originalPrice: "₹949.99",
         rating: "4.6",
         ratingCount: "3,142 ratings",
@@ -1359,7 +1002,7 @@
     "33": {
         title: "Acer Swift X Creator Laptop",
         image: "https://m.media-amazon.com/images/I/71VG3azYMjL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹90,999.99",
+        price: "₹1,099.99",
         originalPrice: "₹1,199.99",
         rating: "4.4",
         ratingCount: "892 ratings",
@@ -1390,7 +1033,7 @@
     "34": {
         title: "MSI Katana GF76 Gaming Laptop",
         image: "https://images.frandroid.com/wp-content/uploads/2024/01/razer-blade-16-2024-frandroid-2024.png",
-        price: "₹45,999.99",
+        price: "₹1,499.99",
         rating: "4.8",
         ratingCount: "2,585 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1419,7 +1062,7 @@
     "35": {
         title: "Microsoft Surface Laptop 5",
         image: "https://th.bing.com/th/id/OIP.WMSPl5ENCaPpj_nlf2SwaAHaFj?rs=1&pid=ImgDetMain",
-        price: "₹60,999.99",
+        price: "₹1,299.99",
         originalPrice: "₹1,399.99",
         rating: "4.6",
         ratingCount: "3,421 ratings",
@@ -1450,7 +1093,7 @@
     "36": {
         title: "ROG zephyrus G16",
         image: "https://th.bing.com/th/id/OIP.1h9othO2DYh8E93CY3vRegHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        price: "₹67,999.99",
+        price: "₹3,499.99",
         rating: "4.9",
         ratingCount: "1,024 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1539,7 +1182,7 @@
     "39": {
         title: "Blackview Tab 16 Android Tablet",
         image: "https://m.media-amazon.com/images/I/71a+I5A5slL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹8,999",
+        price: "₹199.99",
         rating: "4.0",
         ratingCount: "892 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1627,7 +1270,7 @@
     "42": {
         title: "OUKITEL RT3 Rugged Tablet",
         image: "https://m.media-amazon.com/images/I/81q9TZwKhwL._AC_UY327_FMwebp_QL65_.jpg",
-        price: "₹15,999",
+        price: "₹349.99",
         rating: "4.2",
         ratingCount: "1,024 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1695,7 +1338,7 @@
     "44": {
         title: "Razer Edge 5G Gaming Tablet",
         image: "https://th.bing.com/th/id/OIP.ooNXtRBlQPYJaPQ3YZ9FLgHaEK?w=267&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        price: "₹16,999.99 ",
+        price: "₹899.99",
         rating: "4.7",
         ratingCount: "1,847 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -1722,8 +1365,8 @@
     "45": {
         title: "Motorola Tab G85 5G",
         image: "https://th.bing.com/th/id/OIP.L8gVYk9AGJ1EoJYSIA0OjAHaGV?w=189&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        price: "₹6,999.99",
-        originalPrice: "₹7,299.99",
+        price: "₹279.99",
+        originalPrice: "₹299.99",
         rating: "4.1",
         ratingCount: "1,562 ratings",
         delivery: "₹8.99 delivery Wed, 2 Apr",
@@ -1751,7 +1394,7 @@
     "46": {
         title: "ASUS VivoTab 13.4\" 2-in-1 OLED Windows Tablet",
         image: "https://images.anandtech.com/doci/6387/DSC_0024_575px.jpg",
-        price: "₹7,999.99",
+        price: "₹1,199.99",
         originalPrice: "₹1,349.99",
         rating: "4.5",
         ratingCount: "892 ratings",
@@ -1791,7 +1434,7 @@
     "47": {
         title: "DOOGEE T20 Ultra Tablet",
         image: "https://th.bing.com/th/id/OIP.YTI91yGuGFvZT03eQz8KgAHaHX?w=179&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        price: "₹10,999.99",
+        price: "₹399.99",
         rating: "4.3",
         ratingCount: "1,024 ratings",
         delivery: "FREE delivery Wed, 2 Apr",
@@ -3641,264 +3284,4 @@
 
     
 };
-
-
-        // Review system
-        let currentRating = 0;
-        const ratingStars = document.querySelectorAll('.rating-star');
-        
-        ratingStars.forEach(star => {
-            star.addEventListener('click', function() {
-                const rating = parseInt(this.getAttribute('data-rating'));
-                currentRating = rating;
-                
-                // Update star display
-                ratingStars.forEach((s, index) => {
-                    if (index < rating) {
-                        s.classList.add('selected');
-                    } else {
-                        s.classList.remove('selected');
-                    }
-                });
-            });
-        });
-        
-        document.getElementById('submit-review').addEventListener('click', function() {
-            const reviewText = document.getElementById('review-text').value.trim();
-            
-            if (currentRating === 0) {
-                alert('Please select a rating');
-                return;
-            }
-            
-            if (reviewText === '') {
-                alert('Please write your review');
-                return;
-            }
-            
-            // Create a new review
-            const review = {
-                id: Date.now(),
-                author: "You",
-                rating: currentRating,
-                text: reviewText,
-                date: new Date().toLocaleDateString()
-            };
-            
-            // Save to localStorage
-            const productId = new URLSearchParams(window.location.search).get('id');
-            const reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`)) || [];
-            reviews.unshift(review);
-            localStorage.setItem(`reviews_${productId}`, JSON.stringify(reviews));
-            
-            // Clear form
-            document.getElementById('review-text').value = '';
-            currentRating = 0;
-            ratingStars.forEach(star => star.classList.remove('selected'));
-            
-            // Refresh reviews
-            loadReviews(productId);
-        });
-        
-        // Inside your existing sepprod.html, replace the loadReviews function with this:
-
-function loadReviews(productId) {
-    // Pre-coded reviews for demonstration
-    const defaultReviews = [
-        {
-            id: 1,
-            author: "TechEnthusiast42",
-            rating: 5,
-            text: "Absolutely love this phone! The camera quality is outstanding and the battery life lasts all day.",
-            date: "2023-10-15"
-        },
-        {
-            id: 2,
-            author: "MobileGuru",
-            rating: 4,
-            text: "Great value for money. The display is vibrant and the performance is smooth. Only wish it had wireless charging.",
-            date: "2023-11-02"
-        },
-        {
-            id: 3,
-            author: "FirstTimeBuyer",
-            rating: 3,
-            text: "Good phone overall, but the fingerprint sensor could be more responsive. Camera is excellent though.",
-            date: "2023-11-20"
-        }
-    ];
-
-    // Get reviews from localStorage or use default ones
-    let reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`));
-    
-    if (!reviews || reviews.length === 0) {
-        // If no reviews exist, use the default ones
-        reviews = defaultReviews;
-        localStorage.setItem(`reviews_${productId}`, JSON.stringify(reviews));
-    }
-
-    const reviewList = document.getElementById('review-list');
-    
-    if (reviews.length === 0) {
-        reviewList.innerHTML = '<p>No reviews yet. Be the first to review!</p>';
-        return;
-    }
-    
-    reviewList.innerHTML = reviews.map(review => `
-        <div class="review-item">
-            <div class="review-header">
-                <span class="review-author">${review.author}</span>
-                <span class="review-date">${review.date}</span>
-            </div>
-            <div class="review-rating">
-                ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-            </div>
-            <div class="review-text">${review.text}</div>
-        </div>
-    `).join('');
-} // Load product data
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const productId = urlParams.get('id');
-            const container = document.getElementById('product-container');
-            
-            if (productId && products[productId]) {
-                const product = products[productId];
-                
-                // Generate HTML for the product
-                let productHTML = `
-                    <div class="product-image">
-                        ${product.discount ? `<div class="image-badge">${product.discount.split(' ')[0]}</div>` : ''}
-                        <img src="${product.image}" alt="${product.title}">
-                    </div>
-                    <div class="product-info">
-                        <h1 class="product-title">${product.title}</h1>
-                        
-                        <div class="product-rating">
-                            <div class="stars">
-                                ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}
-                            </div>
-                            <span class="rating-count">${product.ratingCount}</span>
-                        </div>
-                        
-                        <div class="price-section">
-                            <span class="current-price">${product.price}</span>
-                            ${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}
-                            ${product.discount ? `<span class="discount">${product.discount}</span>` : ''}
-                        </div>
-                        
-                        <div class="delivery-info">
-                            <i class="fas fa-truck"></i> ${product.delivery}
-                        </div>
-                        ${product.stock ? `<div class="stock-info"><i class="fas fa-box"></i> ${product.stock}</div>` : ''}
-                        
-                        <div class="product-actions">
-                            <button class="action-btn add-to-cart" onclick="addToCart('${productId}')">
-                                <i class="fas fa-shopping-cart"></i> Add to Basket
-                            </button>
-                            <button class="action-btn buy-now" onclick="buyNow('${productId}')">
-                                <i class="fas fa-bolt"></i> Buy Now
-                            </button>
-                        </div>
-                        
-                        <div class="product-tabs">
-                            <div class="tab-header">
-                                <button class="tab-btn active" onclick="openTab(event, 'specs')">Specifications</button>
-                                <button class="tab-btn" onclick="openTab(event, 'highlights')">Highlights</button>
-                            </div>
-                            
-                            <div id="specs" class="tab-content active">
-                                <table class="specs-table">
-                                    ${Object.entries(product.specs).map(([key, value]) => `
-                                        <tr>
-                                            <td class="spec-name">${key}</td>
-                                            <td>${value}</td>
-                                        </tr>
-                                    `).join('')}
-                                </table>
-                            </div>
-                            
-                            <div id="highlights" class="tab-content">
-                                <ul>
-                                    ${product.highlights.map(highlight => `
-                                        <li style="margin-bottom: 8px;">${highlight}</li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                container.innerHTML = productHTML;
-                document.title = product.title + " - Quadcore";
-                
-                // Load reviews for this product
-                loadReviews(productId);
-            } else {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 50px; width: 100%;">
-                        <h2 style="color: var(--danger);">Product Not Found</h2>
-                        <p>The requested product could not be found.</p>
-                        <a href="index.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 4px;">← Back to Home</a>
-                    </div>
-                `;
-            }
-        };
-        
-        function openTab(evt, tabName) {
-            const tabContents = document.getElementsByClassName("tab-content");
-            const tabButtons = document.getElementsByClassName("tab-btn");
-            
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-                tabButtons[i].classList.remove("active");
-            }
-            
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-        
-        function addToCart(productId) {
-            const product = products[productId];
-            if (!product) return;
-            
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const existingItem = cart.find(item => item.id === productId);
-            
-            const productData = {
-                id: productId,
-                name: product.title,
-                price: product.price,
-                image: product.image,
-                quantity: 1
-            };
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push(productData);
-            }
-            
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${product.title} added to cart!`);
-        }
-        
-        function buyNow(productId) {
-            const product = products[productId];
-            if (!product) return;
-            
-            // Store the single product for checkout
-            localStorage.setItem('checkoutProduct', JSON.stringify({
-                id: productId,
-                title: product.title,
-                price: product.price,
-                image: product.image,
-                delivery: product.delivery
-            }));
-            
-            // Redirect to checkout
-            window.location.href = "checkout.html";
-        }
-    </script>
-</body>
-</html>
+window.productsData = products;

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  
+
+
+<header class="header">
+  <div class="container-header">
+      <div class="logo-container">
+          <div class="logo"></div>
+          <span class="dotin"></span>
+      </div>
+      <div class="search-container">
+          <form id="searchForm" action="search.html" method="GET">
+              <input type="text" 
+                     name="q" 
+                     id="searchInput" 
+                     class="search-input" 
+                     placeholder="Search for products..." 
+                     aria-label="Search products"
+                     required>
+              <button type="submit" class="search-icon" aria-label="Submit search">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+          </form>
+          <div id="searchSuggestions" class="search-suggestions"></div>
+      </div>
+      <div class="header-actions">
+          <div class="header-action">
+              <i class="fa-regular fa-heart"></i>
+             <a href="wishlist.html" style="color: white;"><p>Wishlist</p></a>
+          </div>
+          <div class="header-action">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <a href="cart.html" style="color: white;"><p>cart</p></a>
+          </div>
+  
+         <div class="header-action">
+          <i class="fa-solid fa-user"></i>
+           <div id="account-info">
+           <a href="signin.html" style="color: white;"><p>Account</p></a>
+           </div>
+         </div>
+      </div>
+  </div>
+</header>
+<br>
+<!--navigation-->
+<nav class="nav">
+  <div class="container-nav">
+      <ul>
+          <li class="border-white" id="open-nav-sidebar">
+              <span class="open-nav-slider">
+                  <i class="fa-solid fa-bars"></i>
+      
+              </span>
+          </li>
+          <li class="border-white"><a href="index.html">Home</a></li>
+            
+          <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
+          <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
+          <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
+          <li class="border-white"><a href="electronics.html">Electronics</a></li>
+          <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
+          <li class="border-white"><a href="fashion.html">Fashion</a></li>
+          <li class="border-white"><a href="accessories.html">Accessories</a></li>
+          <li class="border-white"><a href="orders.html">Orders</a></li>
+      </ul>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<!-- FAMILY SECTION START -->
+<section id="family-section" style="padding: 80px 20px; background: #f9f9fb;">
+  <div class="container" style="max-width: 1200px; margin: auto;">
+    <h2 style="text-align: center; color: #1a1a2e; margin-bottom: 40px; font-size: 2.2rem;">
+      👨‍👩‍👧‍👦 My Family
+    </h2>
+
+    <div id="familyGrid" class="family-grid"></div>
+
+    <button class="add-member-btn" onclick="showModal()">+ Add Family Member</button>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="familyModal">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal()">&times;</button>
+    <h3>Add Family Member</h3>
+    <input type="text" id="name" placeholder="Full Name" />
+    <input type="number" id="age" placeholder="Age" />
+    <select id="relation">
+      <option value="">Select Relation</option>
+      <option value="Child">Child</option>
+      <option value="Parent">Parent</option>
+      <option value="Spouse">Spouse</option>
+      <option value="Sibling">Sibling</option>
+    </select>
+    <button onclick="addFamilyMember()">Add</button>
+  </div>
+</div>
+
+<style>
+  .family-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .family-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    position: relative;
+    transition: 0.3s ease;
+  }
+
+  .family-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .family-card h4 {
+    margin: 0;
+    color: #0066c0;
+    font-size: 1.3rem;
+  }
+
+  .family-card p {
+    margin: 8px 0;
+    color: #555;
+  }
+
+  .family-card .product-tags {
+    margin-top: 12px;
+  }
+
+  .product-tag {
+    display: inline-block;
+    background: #0066c0;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.75rem;
+    margin: 5px 5px 0 0;
+  }
+
+  .add-member-btn {
+    background: linear-gradient(to right, #ff8a00, #e52e71);
+    color: white;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 138, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .add-member-btn:hover {
+    box-shadow: 0 8px 20px rgba(255, 138, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Modal Styling */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+
+  .modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .modal-box input,
+  .modal-box select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  .modal-box button {
+    background: #0066c0;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .close-modal {
+    background: transparent;
+    font-size: 1.5rem;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 600px) {
+    .family-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<script src="auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const accountInfo = document.getElementById('account-info');
+
+  if (user) {
+    accountInfo.innerHTML = `
+      <a href="account.html" style="color: white; display: flex; align-items: center; gap: 5px;">
+        <p>${user.name.split(' ')[0]}</p>
+        ${user.membership && user.membership.isPremium ? 
+          '<i class="fas fa-crown" style="color: gold; font-size: 0.8em; text-shadow: 0 0 5px rgba(255,215,0,0.5);"></i>' : ''}
+      </a>
+    `;
+  } else {
+    accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+  }
+});
+
+</script>
+<script>
+  const STORAGE_KEY = 'familyMembers';
+  const familyGrid = document.getElementById('familyGrid');
+
+  const productSuggestions = {
+    Child: ['Toys', 'Story Books', 'Lunch Boxes'],
+    Parent: ['Wellness Kits', 'Foot Massager', 'Reading Glasses'],
+    Spouse: ['Fragrances', 'Smartwatch', 'Gift Cards'],
+    Sibling: ['Headphones', 'Sneakers', 'Games']
+  };
+
+  // Load family data from localStorage
+  function loadFamilyMembers() {
+    const members = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    familyGrid.innerHTML = ''; // Clear previous
+    members.forEach(renderFamilyCard);
+  }
+
+  function renderFamilyCard(member) {
+    const card = document.createElement('div');
+    card.className = 'family-card';
+    card.innerHTML = `
+      <h4>${member.name}</h4>
+      <p><strong>Relation:</strong> ${member.relation}</p>
+      <p><strong>Age:</strong> ${member.age}</p>
+      <div class="product-tags">
+        ${productSuggestions[member.relation].map(p => `<span class="product-tag">${p}</span>`).join('')}
+      </div>
+    `;
+    familyGrid.appendChild(card);
+  }
+
+  function addFamilyMember() {
+    const name = document.getElementById('name').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const relation = document.getElementById('relation').value;
+
+    if (!name || !age || !relation) {
+      alert("Please complete all fields.");
+      return;
+    }
+
+    const newMember = { name, age, relation };
+    const members = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+    members.push(newMember);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
+
+    renderFamilyCard(newMember);
+    closeModal();
+
+    // Clear fields
+    document.getElementById('name').value = '';
+    document.getElementById('age').value = '';
+    document.getElementById('relation').value = '';
+  }
+
+  function showModal() {
+    document.getElementById('familyModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('familyModal').style.display = 'none';
+  }
+
+  // Load on page load
+  document.addEventListener('DOMContentLoaded', loadFamilyMembers);
+</script>
+
+<!-- FAMILY SECTION END -->
+<footer class="footer">
+  <div class="footer-content">
+      <p>&copy; 2025 Quadcode. All rights reserved.</p>
+      <div class="social-icons">
+          <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.instagram.com/akheel____007/?next=%2F"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+  </div>
+</footer>
+</body>
+</html>

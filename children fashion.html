@@ -36,6 +36,7 @@
     margin-top: 80px; /* Adjust this value based on your header's height */
 }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- Header -->
@@ -46,11 +47,21 @@
                 <span class="dotin"></span>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for products..." />
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" 
+                           name="q" 
+                           id="searchInput" 
+                           class="search-input" 
+                           placeholder="Search for products..." 
+                           aria-label="Search products"
+                           required>
+                    <button type="submit" class="search-icon" aria-label="Submit search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div id="searchSuggestions" class="search-suggestions"></div>
             </div>
+           
             <div class="header-actions">
                 <div class="header-action">
                     <i class="fa-regular fa-heart"></i>
@@ -62,8 +73,9 @@
                 </div>
                 <div class="header-action">
                     <i class="fa-solid fa-user"></i>
-                    <a href="account.html" style="color: white;"><p>Account</p></a>
-                </div>
+                    <div id="account-info">
+                        <a href="signin.html" style="color: white;"><p>Account</p></a>
+                    </div>
             </div>
         </div>
     </header>
@@ -72,14 +84,16 @@
             <ul>
       
                 <li class="border-white"><a href="index.html">Home</a></li>
-                <li class="border-white"><a href="toprated.html">Best Sellers</a></li>
-                <li class="border-white"><a href="todaysdeal.html">Today's Deals</a></li>
+                  
+                <li class="border-white"><a href="todaysdeal.html">Trending</a></li>
                 <li class="border-white"><a href="mobiles.html">Mobiles</a></li>
                 <li class="border-white"><a href="customerservice.html">Customer Service</a></li>
                 <li class="border-white"><a href="electronics.html">Electronics</a></li>
                 <li class="border-white"><a href="furniturestore.html">Home & Kitchen</a></li>
                 <li class="border-white"><a href="fashion.html">Fashion</a></li>
                 <li class="border-white"><a href="accessories.html">Accessories</a></li>
+                <li class="border-white"><a href="orders.html">Orders</a></li>
+                <li class="border-white"><a href="family.html">Family</a></li>
             </ul>
     </nav>
 
@@ -88,115 +102,150 @@
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQupz7elln5O74o6Y5wYpLPHutgRGzKJTMk60MyaNcX8BKO5PLj5_Z8Dt0vR5zSMLeNw561ZGfJRDpUKid-B-VyeGGoqmSAAUYnlxgktH-vWoUvKe88pFkhpA" alt="image">
             <h3>ARMANI JUNIOR All-Over Logo Regular Fit Shirt For Boys (White, 8-9Y)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹7,500 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹7,500  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
             <button>Add to basket</button>
-            <a href="sepprod.html?id=13"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <a href="sepprod.html?id=13">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSMur9FL2_pPo0osJsdSiAdG_KcJWYz7ObirgKtH2VFrtmgRKDVUxoa6Ikkv2InsNSMYQ9fIomNfcQQgauSyn5LJeV1w4NgmHnWC3skZPSid4U76wZSYcfNXg" alt="UMIDIGI A15C">
             <h3>H&M Boys 3-piece Dressy Set</h3>
             <div class="rating">★★★★☆ (379)</div>
-            <div class="price">₹59,891.18</div>
+            <div class="price">₹5,891.18</div>
             <div class="delivery">₹17.16 delivery Wed, 2 Apr</div>
             <div class="stock">Only 14 left in stock</div>
             <div class="options">1 other colour/pattern</div>
-            <a href="sepprod.html?id=14"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=14">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQcrXQ3onOC11QyGvWvBlBAuunAI6Z_SDt1-hTZ0Kn1qbFGxb3ZypwV8UtYOSinyNtSpkvPoI-KBJ42xPaLrahyxXikskVf05OyQF5wfvcBU9mnqStSrF5o" alt="QUKITEL C51">
             <h3>Emporio Armani Kids monogram blazer</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹64,011.18<span class="discount">Save 5% with voucher</span></div>
+                ₹6,011.18 </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=15"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=15">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRqS7kldgg7TYgMZ5Jjx7L--aM4n3hvkimH-b2evQnkgGs07gZyOuwJsRJ6HYTTFQ41QxG-pwPTnNbO-DQdCGNe2MdabnphhA92JLok-yiUi6vN7UWXNW-S" alt="QUKITEL C51">
             <h3>Emporio Armani Kids Intarsia-knit Logo Cotton Jumper</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹26,271.97 <span class="discount">Save 5% with voucher</span></div>
+                ₹2,271.97  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=16"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=16">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSw1ED6UWnV-96bhciSvpR5eYPj-GgMixH0wZ4mLIFu4UATLWN8fnFx5K9JEa5kCuMon90CkXWIp3l08RYGKznUb6vSfVe76I5j9TiMX4RTA3p_8fgrsh7A" alt="QUKITEL C51">
             <h3>Emporio Armani striped seersucker suit kids</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹77,104.38 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹7,104.38  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=17"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>        </div>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=17">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>        </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTqwP0okYHY-oAm9S5m-ggd1l7vteFL-jbRc2wB5ms38D5BCONoV73BmcanFVgQMzhOnowjnTP7eA1sIjkg5xN1DW2vc4mh636vv-r1e2Vye7dRnvXl33eh" alt="QUKITEL C51">
             <h3>Emporio Armani Kids - two-piece dinner suit - kids - 8 yrs - Black</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹87,887.01<span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹8,887.01 </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=18"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=18">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ06elH6Piw0BwtZaS5xFzfEIK9oaivxJPXN4lMCV9H_zUihckr9PT_Gpk-SVoMi3s7DwWVqx_vgdNxoX4X_DFmOFbJsO4j_3Z89F_ijNYauTIF1laIN70HMw" alt="QUKITEL C51">
             <h3>Emporio Armani Kids - logo-jacquard dress - kids - Polyester/Viscose - 8 yrs - Blue</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹23,619.10 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹3,619.10  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=19"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=19">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjnpbbKn0DN2Lz0K0LUqy_tsThM4h_yOLWMowozXlbOPi8lUzvM4PKtGWYpW0C1uaaBlX9eC4SMuv3m-6wG6C-ZVyuwO0tZcqpHgj0fpHqz5hU_apXYiXFxg" alt="QUKITEL C51">
             <h3>ARMANI JUNIOR Blended Regular Fit Dress For Girls (Navy, 12-13Y)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹11,000 <span class="discount">Save 5% with voucher</span></div>
+                ₹1,000  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=20"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=20">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSKwQ8YBJCWNK0cyZLfZ84VoV6MoqzQUvD9EIejwKiijGXXw5nbgKL5NBhg1f0ByNyBmTOIXodQ1XRVQB_01g8zkrGDAjzFRWERUZmW0ISnZI2ryOalU6uYZg" alt="QUKITEL C51">
             <h3>Dress EMPORIO ARMANI kids</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹15,037.08 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹5,037.08  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=21"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=21">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRk-kEHZkNQLkQCVMY0CXg7OHWbTKWOKzUmegph8kWnkHmOp6QwpX5Yrhs8X-wigu8Jgr61akxOXFgJLIo4Ff-laYsoDoa3YFisl7Hhn6Hlw_IQM3lb3zxR1w" alt="QUKITEL C51">
             <h3>ARMANI JUNIOR EA Jersey Fleece Dress For Girls (Peach, 10-11Y)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹19,000<span class="discount">Save 5% with voucher</span></div>
+                ₹9,000 </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=22"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=22">
+            <button>Add to wishlist</button>
+            <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTgH5_BK2yIni-yb_ouci8tTPEg5hp7B_w7osh5tynVyfOHJY41JFJ1qU9dQEub1D3Qx7vVp5HGfr-VZatqVxQjGI4XVQypASnFEAq5Cm6itu2M1c40X4tpvg" alt="QUKITEL C51">
             <h3>ARMANI JUNIOR New Manga Blended Regular Fit Dress For Girls (Beige, 4-5Y)</h3>
             <div class="rating">★★★★☆ (1,585)</div>
             <div class="price">
-                ₹10,500 <span class="discount">Save 5% with voucher</span></div>
+                ₹10,500  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=23"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=23">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTQZah5lySBsS06Jhw5nvdD1E3KbKlxIHTzEe60tQkth7rf662GqHwnpn4z2EViANZSFWbSA0Rol2aL8IWMus_lnzxrZeX02dJUbbwqwBdoKrE5khfxD7Ik" alt="QUKITEL C51">
             <h3>Armani Junior Silk Floral Print Dress 5A Mint Green</h3>
             <div class="rating">★★★★☆ (1,585)</div>
-            <div class="price">₹21,079 <span class="discount">Save 5% with voucher</span></div>
+            <div class="price">₹1,079  </div>
             <div class="delivery">₹17.62 delivery Wed, 2 Apr</div>
             <div class="options">2 other colours/patterns</div>
-            <a href="sepprod.html?id=24"><button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
+            <button>Add to basket</button>
+            <a href="sepprod.html?id=24">
+                <button>Add to wishlist</button>
+                <button style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px;">Buy Now</button></a>
         </div>
         <!-- Add more product cards as needed -->
     </div>
@@ -204,7 +253,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Brand. All rights reserved.</p>
+            <p>&copy; 2025 Quadcode. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://x.com/home"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.facebook.com/akheel.khan.75457"><i class="fa-brands fa-twitter"></i></a>
@@ -214,5 +263,23 @@
     </footer>
     <script src="javascript.js"></script>
     <script src = "cart.js"></script>
+    <script src="auth.js"></script>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const accountInfo = document.getElementById('account-info');
+
+  if (user) {
+    accountInfo.innerHTML = `
+      <a href="account.html" style="color: white;">
+        <p>${user.name.split(' ')[0]}</p>
+      </a>
+    `;
+  } else {
+    accountInfo.innerHTML = '<a href="signin.html" style="color: white;"><p>Account</p></a>';
+  }
+});
+
+</script>
 </body>
 </html>

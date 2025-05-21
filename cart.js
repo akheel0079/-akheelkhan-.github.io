@@ -1,12 +1,10 @@
 
-// Cart functionality
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cart if it doesn't exist
+   
     if (!localStorage.getItem('cart')) {
         localStorage.setItem('cart', JSON.stringify([]));
     }
-
-    // Add click handlers to all "Add to Basket" buttons
     document.querySelectorAll('.product-card button').forEach(button => {
         if (button.textContent.trim() === 'Add to Basket') {
             button.addEventListener('click', function() {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-
     function addToCart(product) {
         const cart = JSON.parse(localStorage.getItem('cart'));
         const existingItem = cart.find(item => item.id === product.id);
@@ -43,12 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cart if it doesn't exist
     if (!localStorage.getItem('cart')) {
         localStorage.setItem('cart', JSON.stringify([]));
     }
-
-    // Add click handlers to all "Add to Basket" buttons
     document.querySelectorAll('.product-card button').forEach(button => {
         if (button.textContent.trim() === 'Add to Basket' || button.textContent.trim() === 'Add to basket') {
             button.addEventListener('click', function() {
@@ -65,13 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     delivery: productCard.querySelector('.delivery')?.textContent || 'Delivery information not available',
                     category: productCard.closest('.category-section')?.querySelector('h2')?.textContent || 'Uncategorized'
                 };
-
                 addToCart(product);
                 alert(`${product.name} added to cart!`);
             });
         }
     });
-
     function addToCart(product) {
         const cart = JSON.parse(localStorage.getItem('cart'));
         const existingItem = cart.find(item => item.id === product.id);
@@ -82,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
             product.quantity = 1;
             cart.push(product);
         }
-        
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 });

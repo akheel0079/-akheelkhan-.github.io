@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Quadcore</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0066c0;
+      --accent: #ff8a00;
+      --dark: #1a1a2e;
+      --light: #f5f5f5;
+      --card-bg: #fff;
+      --text: #333;
+      --light-text: #777;
+      --success: #067d62;
+      --danger: #b12704;
+      --premium: #9c27b0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--text);
+    }
+    
+    .checkout-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .order-summary, .checkout-details {
+      flex: 1;
+      min-width: 300px;
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .order-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .order-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    
+    .order-item-details {
+      flex: 1;
+    }
+    
+    .order-item-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .order-item-price {
+      color: var(--danger);
+      font-weight: bold;
+    }
+    
+    .price-summary {
+      margin: 20px 0;
+    }
+    
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .total-row {
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    
+    .delivery-info {
+      color: var(--success);
+      font-weight: 500;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    .payment-method {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    
+    .payment-method input {
+      width: auto;
+      margin-right: 15px;
+    }
+    
+    .payment-icon {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .place-order-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    
+    .place-order-btn:hover {
+      background: #e67300;
+    }
+    
+    .error-message {
+      color: var(--danger);
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .premium-badge {
+      background: var(--premium);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+    
+    @media (max-width: 768px) {
+      .checkout-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="checkout-container">
+    <div class="order-summary">
+      <h1>Order Summary</h1>
+      <div id="order-items"></div>
+      <div class="price-summary">
+        <div class="price-row">
+          <span>Subtotal:</span>
+          <span id="subtotal">₹0.00</span>
+        </div>
+        <div class="price-row">
+          <span>Delivery:</span>
+          <span id="delivery">₹0.00</span>
+        </div>
+        <div id="discount-row" style="display: none;">
+          <span>Discount:</span>
+          <span id="discount">-₹0.00</span>
+        </div>
+        <div class="price-row total-row">
+          <span>Total:</span>
+          <span id="total">₹0.00</span>
+        </div>
+      </div>
+      <div id="delivery-info" class="delivery-info">
+        <i class="fas fa-truck"></i>
+        <span id="delivery-text"></span>
+      </div>
+    </div>
+
+    <div class="checkout-details">
+      <h1>Shipping Details</h1>
+      <form id="checkout-form">
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" required />
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" required />
+        </div>
+        <div class="form-group">
+          <label for="postcode">Postcode</label>
+          <input type="text" id="postcode" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required />
+        </div>
+
+        <h2>Payment Method</h2>
+        <div class="payment-method">
+          <input type="radio" name="payment" id="credit-card" checked />
+          <label for="credit-card">
+            <i class="fas fa-credit-card payment-icon"></i>
+            Credit/Debit Card
+          </label>
+        </div>
+        <div class="payment-method">
+          <input type="radio" name="payment" id="paypal" />
+          <label for="paypal">
+            <i class="fab fa-paypal payment-icon"></i>
+            PayPal
+          </label>
+        </div>
+        <div class="payment-method">
+          <input type="radio" name="payment" id="cash" />
+          <label for="cash">
+            <i class="fas fa-money-bill-wave payment-icon"></i>
+            Cash on Delivery
+          </label>
+        </div>
+
+        <div id="card-details" style="margin-top: 15px;">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" />
+          </div>
+          <div class="form-group">
+            <label for="expiry">Expiry Date</label>
+            <input type="text" id="expiry" placeholder="MM/YY" />
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123" />
+          </div>
+        </div>
+
+        <button type="button" id="place-order" class="place-order-btn">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Load product and user data
+      const product = JSON.parse(localStorage.getItem('checkoutProduct'));
+      const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+      const orderItems = document.getElementById('order-items');
+      const isPremium = currentUser && currentUser.isPremium;
+      
+      // Initialize prices
+      let price = 0;
+      let deliveryCost = 0;
+      let discount = 0;
+      let total = 0;
+
+      // Function to update prices display
+      function updatePrices() {
+        document.getElementById('subtotal').textContent = `₹${price.toFixed(2)}`;
+        document.getElementById('delivery').textContent = deliveryCost === 0 ? 'FREE' : `₹${deliveryCost.toFixed(2)}`;
+        
+        // Show/hide discount row
+        const discountRow = document.getElementById('discount-row');
+        if (discount > 0) {
+          discountRow.style.display = 'flex';
+          document.getElementById('discount').textContent = `-₹${discount.toFixed(2)}`;
+          if (isPremium) {
+            document.getElementById('discount').innerHTML += ` <span class="premium-badge">Premium</span>`;
+          }
+        } else {
+          discountRow.style.display = 'none';
+        }
+        
+        // Calculate and display total
+        total = price + deliveryCost - discount;
+        document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+        
+        // Update delivery info text
+        const deliveryText = document.getElementById('delivery-text');
+        if (isPremium && deliveryCost === 0) {
+          deliveryText.innerHTML = `FREE delivery for <span class="premium-badge">Premium</span> members`;
+          deliveryText.style.color = 'var(--premium)';
+        } else if (deliveryCost === 0) {
+          deliveryText.textContent = 'FREE delivery';
+          deliveryText.style.color = 'var(--success)';
+        } else {
+          deliveryText.textContent = `Standard delivery (₹${deliveryCost.toFixed(2)})`;
+          deliveryText.style.color = 'var(--text)';
+        }
+      }
+
+      // Check if user is logged in
+      if (!currentUser || !currentUser.email) {
+        alert('Please sign in first.');
+        window.location.href = 'signin.html';
+        return;
+      }
+
+      // Check if product exists
+      if (!product) {
+        orderItems.innerHTML = `<div class="error-message"><p>No product found in your order.</p><p><a href="index.html">Continue shopping</a></p></div>`;
+        document.getElementById('place-order').disabled = true;
+        return;
+      }
+
+      // Display product
+      orderItems.innerHTML = `
+        <div class="order-item">
+          <img src="${product.image}" alt="${product.title}" class="order-item-img">
+          <div class="order-item-details">
+            <div class="order-item-title">${product.title}</div>
+            <div class="order-item-price">${product.price}</div>
+          </div>
+        </div>
+      `;
+
+      // Parse product price
+      price = parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0;
+      
+      // Calculate delivery cost
+      if (product.delivery.includes('FREE')) {
+        deliveryCost = 0;
+      } else {
+        const deliveryMatch = product.delivery.match(/₹([\d.]+)/);
+        deliveryCost = deliveryMatch ? parseFloat(deliveryMatch[1]) : 0;
+      }
+      
+      // Apply premium benefits if applicable
+      if (isPremium) {
+        // 10% discount for premium members
+        discount = price * 0.1;
+        // Free shipping for premium members
+        deliveryCost = 0;
+      }
+      
+      // Initial price update
+      updatePrices();
+
+      // Payment method toggle
+      document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+          const cardDetails = document.getElementById('card-details');
+          cardDetails.style.display = this.id === 'credit-card' ? 'block' : 'none';
+        });
+      });
+
+      // Place order button handler
+      document.getElementById('place-order').addEventListener('click', function () {
+        const form = document.getElementById('checkout-form');
+        const inputs = form.querySelectorAll('input[required]');
+        let isValid = true;
+
+        // Validate required fields
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            input.style.borderColor = 'red';
+            isValid = false;
+          } else {
+            input.style.borderColor = '#ddd';
+          }
+        });
+
+        if (!isValid) {
+          alert('Please fill in all required fields');
+          return;
+        }
+
+        // Validate card details if credit card selected
+        if (document.getElementById('credit-card').checked) {
+          const cardNumber = document.getElementById('card-number').value;
+          const expiry = document.getElementById('expiry').value;
+          const cvv = document.getElementById('cvv').value;
+
+          if (!cardNumber || !expiry || !cvv) {
+            alert('Please fill in all card details');
+            return;
+          }
+
+          if (!/^\d{16}$/.test(cardNumber.replace(/\s/g, ''))) {
+            alert('Invalid card number');
+            return;
+          }
+        }
+
+        // Create order object
+        const order = {
+          id: Date.now(),
+          userEmail: currentUser.email,
+          items: [
+            {
+              name: product.title,
+              price: price,
+              quantity: 1,
+              image: product.image
+            }
+          ],
+          totals: {
+            subtotal: price,
+            shipping: deliveryCost,
+            tax: 0,
+            discount: discount,
+            total: total
+          },
+          shippingAddress: {
+            firstName: document.getElementById('full-name').value.split(' ')[0],
+            lastName: document.getElementById('full-name').value.split(' ').slice(1).join(' ') || '',
+            address: document.getElementById('address').value,
+            city: document.getElementById('city').value,
+            state: '',
+            zip: document.getElementById('postcode').value,
+            country: 'India',
+            phone: document.getElementById('phone').value
+          },
+          status: 'processing',
+          date: new Date().toISOString(),
+          isPremiumOrder: isPremium
+        };
+
+        // Save order to localStorage
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        // Clear checkout product
+        localStorage.removeItem('checkoutProduct');
+
+        // Redirect to orders page
+        alert('Order placed successfully!');
+        window.location.href = 'orders.html';
+      });
+    });
+  </script>
+</body>
+</html>
